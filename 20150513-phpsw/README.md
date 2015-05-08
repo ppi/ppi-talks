@@ -36,6 +36,22 @@ Some reveal.js features, like external Markdown and speaker notes, require that 
 
    You can change the port by using `grunt serve --port 8001`.
 
+## Single page HTML
+
+1. Install Inliner
+    ```sh
+    $ npm install inliner -g
+    ```
+    
+2. Serve the presentation
+   ```sh
+   $ grunt serve
+   ```
+   
+3. Turns the presentation web page to a single HTML file with everything inlined
+    ```sh
+    $ inliner -v http://0.0.0.0:8000/#/ > build/ppi-phpsw-20150513.html
+
 ## PDF Export
 
 Presentations can be exported to PDF via a special print stylesheet. This feature requires that you use [Google Chrome](http://google.com/chrome).
