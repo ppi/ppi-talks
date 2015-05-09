@@ -7,3 +7,4 @@ node_modules/
 .sass-cache
 css/reveal.min.css
 js/reveal.min.js
+build/
