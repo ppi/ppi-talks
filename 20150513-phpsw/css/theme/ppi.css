@@ -57,8 +57,22 @@ body {
   font-size: 3.77em; }
 
 .reveal h2 {
-  font-size: 2.11em; }
-
+    font-size: 2.11em;
+}
+.reveal h2 {
+  text-shadow: 0 1px 0 #ccc,
+    0 2px 0 #c9c9c9,
+    0 3px 0 #bbb,
+    0 4px 0 #b9b9b9,
+    0 5px 0 #aaa,
+    0 6px 1px rgba(0,0,0,.1),
+    0 0 5px rgba(0,0,0,.1),
+    0 1px 3px rgba(0,0,0,.3),
+    0 3px 5px rgba(0,0,0,.2),
+    0 5px 10px rgba(0,0,0,.25),
+    0 10px 10px rgba(0,0,0,.2),
+    0 20px 20px rgba(0,0,0,.15);
+}
 .reveal h3 {
   font-size: 1.55em; }
 
@@ -136,29 +150,31 @@ body {
   font-style: italic; }
 
 .reveal pre {
-  display: block;
-  position: relative;
-  width: 90%;
-  margin: 20px auto;
-  text-align: left;
-  font-size: 0.55em;
-  font-family: monospace;
-  line-height: 1.2em;
-  word-wrap: break-word;
-  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3); }
-
-.reveal code {
-  font-family: monospace; }
-
+    display: block;
+    position: relative;
+    width: 100%;
+    margin: 20px auto;
+    text-align: left;
+    font-size: 0.55em;
+    font-family: monospace;
+    line-height: 1.2em;
+    word-wrap: break-word;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+    background-color: #cccccc;
+    color: #333333;
+    padding:0.5em 0.1em 0.1em;
+}
 .reveal pre code {
   display: block;
   padding: 5px;
   overflow: auto;
-  max-height: 400px;
   word-wrap: normal;
   background: #3F3F3F;
   color: #DCDCDC; }
-
+.reveal .pre {
+    font-family: monospace;
+    color: #dddddd;
+}
 .reveal table {
   margin: auto;
   border-collapse: collapse;
@@ -277,7 +293,7 @@ body {
     left: 1em;
     font-size: 0.5em;
 }
-div.half {
+.half {
     width: 50%;
     float: left;
 }
@@ -287,4 +303,25 @@ div.half {
     border-radius: 500px;
     -webkit-border-radius: 500px;
     -moz-border-radius: 500px;
+}
+
+section p {
+    text-align: left;
+}
+
+section ul {
+    width: 100%;
+}
+
+section li {
+    text-align: left;
+}
+
+.vitor-and-paul li {
+    text-align: left;
+    list-style-position: outside;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    padding-left: 2%;
+    margin-right: 5%;
 }
