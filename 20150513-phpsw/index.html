@@ -80,7 +80,6 @@
 
         </section>
 
-<<<<<<< HEAD
 
         <!-- Section 1 -->
 
@@ -116,50 +115,12 @@
         <section>
             <h2>Why does PPI exist?</h2>
             <h3>What problems does it solve?</h3>
-=======
-        <section>
-            <section>
-                <h2>P.P.I.?</h2>
-
-                <p class="fragment">
-                    <span class="fragment">Hmm.. what does it stand for?</span> <span
-                        class="fragment">I don't know.</span> <span class="fragment">Let me try!</span>
-                </p>
-                <ul>
-                    <li class="fragment"><b style="font-size: larger">P</b>H<b style="font-size: larger;">P</b></li>
-                    <li class="fragment"><b style="font-size: larger">I</b>nteroperability</li>
-
-                </ul>
-                <blockquote class="fragment">
-                    OH, great, another framework. Did you just create this yesterday?
-                </blockquote>
-                <p class="fragment"><span class="fragment">Yes.</span><span class="fragment">.. actually... no.</span></p>
-
-                <p class="fragment">PPI has been around for more than <b>6</b> years now!</p>
-            </section>
-
-            <section>
-                <img src="images/which-is-the-best-quality-ppi.png" width="80%">
-                <blockquote>PPI PHP Meta Framework is the best PPI PHP Meta Framework!</blockquote>
-            </section>
-        </section>
-
-        <section data-background="images/starship-troopers.jpg">
-            <!--<h2>Want to know more?</h2>-->
-            <!--<p style="text-align: center"><img src="" /></p>-->
-        </section>
-
-
-        <section>
-            <h2>Why does PPI exist? What issues currently exist?</h2>
->>>>>>> private/master
 
             <p class="fragment">Currently, existing frameworks impose a 1-to-1 relationship between your framework app and the framework
                 vendor</p>
 
             <p class="fragment">What issues does this cause?</p>
             <p class="fragment">vendor lock-in</p>
-<<<<<<< HEAD
             <!--you’re locked into choosing packages made by the same vendor as the framework you’re-->
             <!--using. aka “putting all your eggs in the one basket” - you can’t take your code with you - you can’t-->
             <!--pull in code from other frameworks and have it mostly just “work” - Gets you “off the island”-->
@@ -169,16 +130,6 @@
         <section>
             <h2>Vendor Lock-In</h2>
             <p><img src="images/vendor-lock-in.png"></p>
-=======
-                <!--you’re locked into choosing packages made by the same vendor as the framework you’re-->
-                <!--using. aka “putting all your eggs in the one basket” - you can’t take your code with you - you can’t-->
-                <!--pull in code from other frameworks and have it mostly just “work” - Gets you “off the island”-->
-
-        </section>
-        <section>
-            <h2>Vendor Lock-In</h2>
-            <p class="fragment"><img src="images/vendor-lock-in.png"></p>
->>>>>>> private/master
         </section>
 
         <section>
@@ -189,30 +140,17 @@
         <section>
             <h4>Problems with Vendor Lock-In</h4>
             <p class="fragment">You are tightly coupled to the framework that your app was build on</p>
-<<<<<<< HEAD
             <p class="fragment">You can't move your code between apps on different frameworks</p>
             <p class="fragment">
-=======
-            <p class="fragment">You can't transport your code between apps</p>
-            <p>
->>>>>>> private/master
 
                 you’re locked into choosing packages made by the same vendor as the framework you’re
                 using. aka “putting all your eggs in the one basket”
 
                 you can’t take your code with you
-<<<<<<< HEAD
             </p>
 
             <p class="fragment">you can’t pull in code from other frameworks and have it mostly just “work”</p>
             <p class="fragment">Gets you “off the island”</p>
-=======
-
-            </p>
-
-            <p>you can’t pull in code from other frameworks and have it mostly just “work”</p>
-            <p>Gets you “off the island”</p>
->>>>>>> private/master
 
         </section>
 
@@ -228,7 +166,6 @@
         </section>
 
         <section>
-<<<<<<< HEAD
             <h2>Benefits of PPI</h2>
             <p class="fragment">Re-usability of knowledge and community effort!</p>
             <p class="fragment">As PHP grows, PPI will grow (Zend3, Aura3, Symfony3)</p>
@@ -294,58 +231,6 @@ class RedisCache implements CacheInterface {
     "psr/http-message": "^0.11"
 }</code></pre>
                     <pre> PPI/Framework/Http/Request.php<code>use Psr\Http\Message\RequestInterface;
-=======
-            <h2>What PPI does not do</h2>
-
-            <p class="fragment">It does <strong>*not*</strong> add abstraction on top of existing framework (like Laravel).
-            </p>
-
-            <p class="fragment">No re-inventing the wheel</p>
-
-            <p class="fragment">Resuseability of knowledge and community effort!</p>
-        </section>
-
-
-        <section>
-            <h2>Benefits of PPI</h2>
-
-            <p class="fragment">As PHP grows, PPI will grow.</p>
-        </section>
-
-        <section>
-            <h2>2. How we build it - technical overview</h2>
-
-        </section>
-
-        <section>
-            <h4>Spearheding PSR Proposals and Ideas</h4>
-
-            <p class="fragment">We're currently using the following PSR's</p>
-            <ul class="fragment">
-                <li>PSR-0</li>
-                <li>PSR-1</li>
-                <li>PSR-2</li>
-                <li>PSR-3</li>
-                <li>PSR-4</li>
-                <li>PSR-7</li>
-            </ul>
-            <p class="fragment">Picture of knight with a PSR logo (Show composer psr/log line)</p>
-        </section>
-
-        <section>
-            <section>
-                <h4>PSR-7 HTTP Message Interface (1)</h4>
-                <p>It's here!</p>
-                <p><img src="images/psr7-tweet-calevans-quorum-has-been-meet.png"></p>
-            </section>
-            <section>
-                <h4>PSR-7 HTTP Message Interface (2)</h4>
-                <pre> composer.json:<code>"require": {
-    "psr/http-message": "^0.11"
-}</code></pre>
-                <pre> PPI/Framework/Http/Request.php<code>
-use Psr\Http\Message\RequestInterface;
->>>>>>> private/master
 use Symfony\Component\HttpFoundation\Request as SymfonyHttpRequest;
 
 /**
@@ -356,40 +241,12 @@ use Symfony\Component\HttpFoundation\Request as SymfonyHttpRequest;
 class Request extends SymfonyHttpRequest implements RequestInterface
 {
     // ...
-<<<<<<< HEAD
 } </code></pre></section>
         <section>
             <h2>PSR-7 HTTP Message Interface</h2>
             <p>Want to know more? <span class="fragment">Ask this guy!&nbsp;=>&nbsp;<img src="images/geeh-1.jpg"></span></p>
         </section>
 
-=======
-}
-                </code></pre>
-                    </pre>
-            </section>
-            <section>
-                <h4>PSR-7 HTTP Message Interface (2)</h4>
-                <p class="fragment">Show Request/Response implements Psr code
-                Want to know more? Ask Gary!</p>
-
-                <p class="fragment"><img src="images/geeh-1.jpg"></p>
-            </section>
-
-        </section>
-
-        <section>
-            <h2>Routing Psr?</h2>
-
-            <p class="fragment">We already built one - and we re-use Symfony CMF ChainRouter</p>
-
-            <p class="fragment">PPI Chain Router Show example (with vertical slides) Show Sf2 Router Show Aura Router Examples are
-                good!</p>
-        </section>
-
-
-
->>>>>>> private/master
         <section>
             <h4>PPI Module extends ZF2 Module</h4>
             <p><img src="images/module-structure.png"></p>
@@ -405,15 +262,11 @@ class Request extends SymfonyHttpRequest implements RequestInterface
             <p><img src="images/module-structure-with-templating.png"></p>
         </section>
 
-<<<<<<< HEAD
         <section>
             <h4>Object Mediation<br>No abstraction! :-)</h4>
             <p>No added abstraction on top of existing framework</p>
             <p><img src="images/object_mediation.png"></p>
         </section>
-=======
-
->>>>>>> private/master
 
         <section>
             <h4>Module1 Rest API Module</h4>
@@ -430,7 +283,6 @@ class Request extends SymfonyHttpRequest implements RequestInterface
             <p><img src="images/module3.png"></p>
         </section>
 
-<<<<<<< HEAD
         <section>
             <h4>PPI Router</h4>
             <p class="fragment">We made a routing interoperability layer (Routing PSR?)</p>
@@ -534,20 +386,6 @@ class Request extends SymfonyHttpRequest implements RequestInterface
         return $this->loadConfig(__DIR__ . '/resources/config/config.yml');
     }
 </code></pre>
-=======
-        <section data-background="images/starship-troopers.jpg">
-            <!--<h2>Want to know more?</h2>-->
-            <!--<p style="text-align: center"><img src="" /></p>-->
-        </section>
-
-
-        <section>
-            <h2>3. Practical Examples</h2>
-
-            <h4>Start using PPI</h4>
-
-            <p class="fragment">composer create-project skeletonapp screenshot of Skeletonapp show how to init PPI\App with options</p>
->>>>>>> private/master
         </section>
 
 
@@ -556,44 +394,7 @@ class Request extends SymfonyHttpRequest implements RequestInterface
         <!--<p class="fragment">@ppi_framework // @dr4goonis // @noiselabs - docs.ppi.io (RTFM!)</p>-->
         <!--</section>-->
 
-<<<<<<< HEAD
 
-=======
-        <!--<section>-->
-        <!--<h2>What's next?</h2>-->
-        <!--<p class="fragment">marketplace - show screenshot PSR Cache - show code screenshot</p>-->
-        <!--</section>-->
-
-        <!-- Example of nested vertical slides -->
-        <section>
-            <section>
-                <h2>Vertical Slides</h2>
-
-                <p class="fragment">Slides can be nested inside of each other.</p>
-
-                <p class="fragment">Use the <em>Space</em> key to navigate through all slides.</p>
-                <br>
-                <a href="#" class="navigate-down"> <img width="178" height="238"
-                                                        data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png"
-                                                        alt="Down arrow"> </a>
-            </section>
-            <section>
-                <h2>Basement Level 1</h2>
-
-                <p class="fragment">Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
-            </section>
-            <section>
-                <h2>Basement Level 2</h2>
-
-                <p class="fragment">That's it, time to go back up.</p>                        <br> <a href="#/2"> <img width="178"
-                                                                                                      height="238"
-                                                                                                      data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png"
-                                                                                                      alt="Up arrow"
-                                                                                                      style="-webkit-transform: rotate(180deg);">
-            </a>
-            </section>
-        </section>
->>>>>>> private/master
 
         <section>
             <h2>Point of View</h2>
@@ -606,98 +407,6 @@ class Request extends SymfonyHttpRequest implements RequestInterface
                     href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out. </p>
         </section>
 
-<<<<<<< HEAD
-=======
-        <section>
-            <h2>Touch Optimized</h2>
-
-            <p class="fragment">
-                Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your
-                slides. </p>
-        </section>
-
-        <section>
-            <section id="fragments">
-                <h2>Fragments</h2>
-
-                <p class="fragment">Hit the next arrow...</p>
-
-                <p class="fragment">... to step through ...</p>
-
-                <p class="fragment"><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span
-                        class="fragment">slide.</span></p>
-
-                <aside class="notes">
-                    This slide has fragments which are also stepped through in the notes window.
-                </aside>
-            </section>
-            <section>
-                <h2>Fragment Styles</h2>
-
-                <p class="fragment">There's different types of fragments, like:</p>
-
-                <p class="fragment grow">grow</p>
-
-                <p class="fragment shrink">shrink</p>
-
-                <p class="fragment roll-in">roll-in</p>
-
-                <p class="fragment fade-out">fade-out</p>
-
-                <p class="fragment current-visible">current-visible</p>
-
-                <p class="fragment highlight-red">highlight-red</p>
-
-                <p class="fragment highlight-blue">highlight-blue</p>
-            </section>
-        </section>
-
-        <section>
-            <section data-background="#dddddd">
-                <h2>Slide Backgrounds</h2>
-
-                <p class="fragment">
-                    Set
-                    <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color
-                    formats are supported.
-                </p>
-                <a href="#" class="navigate-down"> <img width="178" height="238"
-                                                        data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png"
-                                                        alt="Down arrow"> </a>
-            </section>
-            <section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
-                <h2>Image Backgrounds</h2>
-                <pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-            </section>
-            <section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png"
-                     data-background-repeat="repeat" data-background-size="100px">
-                <h2>Tiled Backgrounds</h2>
-                <pre><code
-                        style="word-wrap: break-word;">&lt;section data-background="image.png"
-                    data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-            </section>
-            <section
-                    data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm"
-                    data-background-color="#000000">
-                <div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
-                    <h2>Video Backgrounds</h2>
-                    <pre><code
-                            style="word-wrap: break-word;">&lt;section
-                        data-background-video="video.mp4,video.webm"&gt;</code></pre>
-                </div>
-            </section>
-        </section>
-
-        <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-            <h2>Background Transitions</h2>
-
-            <p class="fragment">
-                Different background transitions are available via the backgroundTransition option. This one's called
-                "zoom". </p>
-            <pre><code>Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
-        </section>
-
->>>>>>> private/master
         <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
             <h2>Background Transitions</h2>
 
@@ -739,39 +448,6 @@ class Request extends SymfonyHttpRequest implements RequestInterface
         </section>
 
         <section>
-<<<<<<< HEAD
-=======
-            <h2>Tabular Tables</h2>
-            <table>
-                <thead>
-                <tr>
-                    <th>Item</th>
-                    <th>Value</th>
-                    <th>Quantity</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Apples</td>
-                    <td>$1</td>
-                    <td>7</td>
-                <tr>
-                <tr>
-                    <td>Lemonade</td>
-                    <td>$2</td>
-                    <td>18</td>
-                <tr>
-                <tr>
-                    <td>Bread</td>
-                    <td>$3</td>
-                    <td>2</td>
-                <tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section>
->>>>>>> private/master
             <h2>Clever Quotes</h2>
 
             <p class="fragment">
@@ -787,84 +463,10 @@ class Request extends SymfonyHttpRequest implements RequestInterface
             </blockquote>
         </section>
 
-<<<<<<< HEAD
 
 
 
 
-=======
-        <section>
-            <h2>Intergalactic Interconnections</h2>
-
-            <p class="fragment">
-                You can link between slides internally, <a href="#/2/3">like this</a>. </p>
-        </section>
-
-        <section>
-            <h2>Speaker View</h2>
-
-            <p class="fragment">There's a <a
-                    href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer,
-                preview of the upcoming slide as well as your speaker notes.
-            </p>
-
-            <p class="fragment">Press the <em>S</em> key to try it out.</p>
-
-            <aside class="notes">
-                Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open
-                the speaker notes window (hit 's' on your keyboard).
-            </aside>
-        </section>
-
-        <section>
-            <h2>Global State</h2>
-
-            <p class="fragment">
-                Set <code>data-state="something"</code> on a slide and
-                <code>"something"</code> will be added as a class to the document element when the slide is open. This
-                lets you apply broader style changes, like switching the page background.
-            </p>
-        </section>
-
-        <section data-state="customevent">
-            <h2>State Events</h2>
-
-            <p class="fragment">
-                Additionally custom events can be triggered on a per slide basis by binding to the
-                <code>data-state</code> name. </p>
-					<pre><code class="javascript" data-trim contenteditable
-                               style="font-size: 18px;"> Reveal.addEventListener( 'customevent', function() {
-                        console.log( '"customevent" has fired' ); } ); </code></pre>
-        </section>
-
-        <section>
-            <h2>Take a Moment</h2>
-
-            <p class="fragment">
-                Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want
-                to take distracting slides off the screen. </p>
-        </section>
-
-        <section>
-            <h2>Much more</h2>
-            <ul>
-                <li>Right-to-left support</li>
-                <li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
-                <li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
-                <li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
-                <li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
-            </ul>
-        </section>
-
-        <section style="text-align: left;">
-            <h1>THE END</h1>
-
-            <p class="fragment">
-                - <a href="http://slides.com">Try the online editor</a> <br> - <a
-                    href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
-            </p>
-        </section>
->>>>>>> private/master
 
     </div>
     <div class='footer'>
