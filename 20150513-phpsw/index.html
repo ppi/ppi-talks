@@ -44,13 +44,13 @@
             <img data-src="images/phpsw-1.jpg" width="25%">
         </section>
 
-        <section>
+        <section class="vitor-and-paul">
             <div class="half">
                 <img src="images/dr4goonis.jpg" class="avatar">
                 <h4>Paul Dragoonis</h4>
                 <ul>
                     <li><a href="https://twitter.com/dr4goonis">@dr4goonis</a></li>
-                    <li>Tech Lead at <a href="https://www.kainos.com/">Kainos</a></li>
+                    <li>QA Lead / Lead Developer at <a href="https://www.kainos.com/">Kainos</a></li>
                     <li><a href="http://php.net/">php.net</a> and <a href="http://www.php-fig.org/">PHP-FIG</a> member
                     </li>
                 </ul>
@@ -134,48 +134,71 @@
             <p>vendor lock-in -- you’re locked into choosing packages made by the same vendor as the framework you’re using. aka “putting all your eggs in the one basket” - you can’t take your code with you - you can’t pull in code from other frameworks and have it mostly just “work” - Gets you “off the island”</p>
         </section>
 
-        <section data-markdown>
-            ## PSR spearhead
-
-            Current PSRs
-
-            - PSR-0, PSR-1, PSR-2, PSR-3, PSR-4, PSR-7 - Picture of knight with a PSR logo - Show composer psr/log line
+        <section>
+            <h3>Spearheding PSR Proposals and Ideas</h3>
+            <p>We're currently using the following PSR's</p>
+            <ul>
+                <li>PSR-0</li>
+                <li>PSR-1</li>
+                <li>PSR-2</li>
+                <li>PSR-3</li>
+                <li>PSR-4</li>
+                <li>PSR-7</li>
+            </ul>
+            <p>Picture of knight with a PSR logo (Show composer psr/log line)</p>
         </section>
 
-        <section data-markdown>
-            ## PSR-7
+        <section>
+            <h3>PSR-7 - HTTP Message Interface</h3>
 
-            Show composer psr/http-message line Show Request/Response implements Psr code Want to know more? Ask Gary! (next talk)
+            <img src="images/psr7-tweet-calevans-quorum-has-been-meet.png">
+            
+            <pre>composer.json:
+                <code>
+                "require": {
+                    "psr/http-message": "^0.11"
+                }
+            </code></pre>
+
+            
+            <p>Show composer psr/http-message line Show Request/Response implements Psr code Want to know more? Ask Gary! (next talk)</p>
         </section>
 
-        <section data-markdown>
-            ## Routing Psr?
-
-            PPI Chain Router Show example (with vertical slides) Show Sf2 Router Show Aura Router Examples are good!
+        <section>
+            <h2>Routing Psr?</h2>
+            <p>PPI Chain Router Show example (with vertical slides) Show Sf2 Router Show Aura Router Examples are good!</p>
         </section>
 
-        <section data-markdown>
-            ## Start using PPI
-
-            composer create-project skeletonapp screenshot of Skeletonapp show how to init PPI\App with options
+        <section>
+            <h2>Start using PPI</h2>
+            <p>composer create-project skeletonapp screenshot of Skeletonapp show how to init PPI\App with options</p>
         </section>
 
-        <section data-markdown>
-            ## Features
-
-            environments - show config console
+        <section>
+            <!--<h2>Features</h2>-->
+            <!--<p>environments - show config console</p>-->
+            <p><img src="images/module1.png"> </p>
         </section>
 
-        <section data-markdown>
-            ## Want to know more?
-
-            - screenshot of Stormship Troopers "Want to know more?" as background - Gitter / Good old IRC - @ppi_framework // @dr4goonis // @noiselabs - docs.ppi.io (RTFM!)
+        <section>
+            <p><img src="images/module2.png"> </p>
         </section>
 
-        <section data-markdown>
-            ## What's next?
+        <section>
+            <p><img src="images/module3.png"> </p>
+        </section>
 
-            marketplace - show screenshot PSR Cache - show code screenshot
+        <section>
+            <h2>Want to know more?</h2>
+
+            <p>screenshot of Stormship Troopers "Want to know more?" as background</p>
+            <p>Gitter / Good old IRC - </p>
+            <p>@ppi_framework // @dr4goonis // @noiselabs - docs.ppi.io (RTFM!)</p>
+        </section>
+
+        <section>
+            <h2>What's next?</h2>
+            <p>marketplace - show screenshot PSR Cache - show code screenshot</p>
         </section>
 
         <!-- Example of nested vertical slides -->

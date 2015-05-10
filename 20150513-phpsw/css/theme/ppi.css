@@ -288,3 +288,24 @@ div.half {
     -webkit-border-radius: 500px;
     -moz-border-radius: 500px;
 }
+
+section p {
+    text-align: left;
+}
+
+section ul {
+    width: 100%;
+}
+
+section li {
+    text-align: left;
+}
+
+.vitor-and-paul li {
+    text-align: left;
+    list-style-position: outside;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    padding-left: 2%;
+    margin-right: 5%;
+}
