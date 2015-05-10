@@ -80,43 +80,6 @@
 
         </section>
 
-<<<<<<< HEAD
-
-        <!-- Section 1 -->
-
-        <section>
-            <h2>1. Why it exists?</h2>
-            <h4>What gap does it fill?</h4>
-        </section>
-
-        <section>
-            <h2>P.P.I.?</h2>
-
-            <p class="fragment">
-                <span class="fragment">Hmm.. what does it stand for?</span>
-            </p>
-            <ul>
-                <li class="fragment"><b style="font-size: larger">P</b>H<b style="font-size: larger;">P</b></li>
-                <li class="fragment"><b style="font-size: larger">I</b>nteroperability</li>
-            </ul>
-            <blockquote class="fragment">
-                OH, great, another framework. Did you just create this yesterday?
-            </blockquote>
-            <p class="fragment"><span class="fragment">Yes.</span><span class="fragment">.. actually... no.</span></p>
-
-            <p class="fragment">PPI has been around for more than <b>9</b> years now!</p>
-            <p class="fragment">PPI version 2.0 was released <b>3</b> years ago</p>
-        </section>
-
-        <section>
-            <img src="images/which-is-the-best-quality-ppi.png" width="80%">
-            <blockquote>PPI PHP Meta Framework is the best PPI PHP Meta Framework!</blockquote>
-        </section>
-
-        <section>
-            <h2>Why does PPI exist?</h2>
-            <h3>What problems does it solve?</h3>
-=======
         <section>
             <section>
                 <h2>P.P.I.?</h2>
@@ -144,41 +107,18 @@
             </section>
         </section>
 
-        <section data-background="images/starship-troopers.jpg">
-            <!--<h2>Want to know more?</h2>-->
-            <!--<p style="text-align: center"><img src="" /></p>-->
-        </section>
-
-
         <section>
             <h2>Why does PPI exist? What issues currently exist?</h2>
->>>>>>> private/master
 
-            <p class="fragment">Currently, existing frameworks impose a 1-to-1 relationship between your framework app and the framework
-                vendor</p>
+            <p class="fragment">Currently, existing frameworks impose a 1-to-1 relationship between your framework app and the framework vendor</p>
 
             <p class="fragment">What issues does this cause?</p>
             <p class="fragment">vendor lock-in</p>
-<<<<<<< HEAD
-            <!--you’re locked into choosing packages made by the same vendor as the framework you’re-->
-            <!--using. aka “putting all your eggs in the one basket” - you can’t take your code with you - you can’t-->
-            <!--pull in code from other frameworks and have it mostly just “work” - Gets you “off the island”-->
-
-        </section>
-
-        <section>
-            <h2>Vendor Lock-In</h2>
-            <p><img src="images/vendor-lock-in.png"></p>
-=======
-                <!--you’re locked into choosing packages made by the same vendor as the framework you’re-->
-                <!--using. aka “putting all your eggs in the one basket” - you can’t take your code with you - you can’t-->
-                <!--pull in code from other frameworks and have it mostly just “work” - Gets you “off the island”-->
 
         </section>
         <section>
             <h2>Vendor Lock-In</h2>
             <p class="fragment"><img src="images/vendor-lock-in.png"></p>
->>>>>>> private/master
         </section>
 
         <section>
@@ -189,31 +129,8 @@
         <section>
             <h4>Problems with Vendor Lock-In</h4>
             <p class="fragment">You are tightly coupled to the framework that your app was build on</p>
-<<<<<<< HEAD
-            <p class="fragment">You can't move your code between apps on different frameworks</p>
-            <p class="fragment">
-=======
             <p class="fragment">You can't transport your code between apps</p>
-            <p>
->>>>>>> private/master
-
-                you’re locked into choosing packages made by the same vendor as the framework you’re
-                using. aka “putting all your eggs in the one basket”
-
-                you can’t take your code with you
-<<<<<<< HEAD
-            </p>
-
-            <p class="fragment">you can’t pull in code from other frameworks and have it mostly just “work”</p>
-            <p class="fragment">Gets you “off the island”</p>
-=======
-
-            </p>
-
-            <p>you can’t pull in code from other frameworks and have it mostly just “work”</p>
-            <p>Gets you “off the island”</p>
->>>>>>> private/master
-
+            <p class="fragment">The list goes on..</p>
         </section>
 
         <section>
@@ -228,76 +145,11 @@
         </section>
 
         <section>
-<<<<<<< HEAD
-            <h2>Benefits of PPI</h2>
-            <p class="fragment">Re-usability of knowledge and community effort!</p>
-            <p class="fragment">As PHP grows, PPI will grow (Zend3, Aura3, Symfony3)</p>
-        </section>
-
-        <section data-background="images/starship-troopers.jpg"></section>
-
-        <!-- Section 2 -->
-        <section>
-            <h2>2. What's inside?</h2>
-            <h4>PPI nuts & bolts</h4>
-            <p><img src="images/ppi-engine-breakdown.png" width="90%"></p>
-        </section>
-
-        <section>
-            <h2>Leverage PHP-FIG standards</h2>
-            <aside class="notes">
-                <ol>
-                    <li>PPI takes advantage of PHP Standard Recommendations to provide an environment where 3rd-party
-                        code can be plugged-in and work with zero rewrites.</li>
-                    <li>Early adopt PSR standards and provide a real-life Proof of Concept for these standards.</li>
-                </ol>
-            </aside>
-            <p class="fragment">A friendly environment for swappable 3rd-party components.</p>
-            <p class="fragment">Components may be PSR-ready or potential candidates (<span class="pre">Router</span>).</p>
-            <p class="fragment">Spearhead PHP-FIG concepts and ideas with a real-life POC for these standards.</p>
-        </section>
-
-        <section>
-            <h2>PSRs - What's in // what's coming?</h2>
-            <p class="fragment half"><img src="images/psr7-accepted.png"></p>
-            <p class="fragment half"><img src="images/psr7-review.png"></p>
-        </section>
-
-        <section>
-            <h2>PSR-6 Caching Interface</h2>
-            <p>In production for over 1 year now, but PSR-6 still not finished.</p>
-            <p><code><pre>
-namespace PPI\CacheModule\Cache\Driver;
-
-use PPI\CacheModule\Cache\CacheItem;
-use PPI\CacheModule\Cache\CacheInterface;
-
-class RedisCache implements CacheInterface {
-    // ...
-}</pre></code></p>
-            <p>Other implementations: <span class="pre">APC, Disk, Memcached, Memory, Xcache</span>.</p>
-        </section>
-
-        <section>
-            <h2>PSR-7 HTTP Message Interface</h2>
-            <p><img src="images/psr7-tweet-calevans-quorum-has-been-meet.png"></p>
-        </section>
-        <section>
-            <h2>PSR-7 HTTP Message Interface</h2>
-            <p class="fragment">PPI is PSR-7 ready!</p>
-            <p class="fragment">You can easily adding more libraries into the mix when they implement PSR-7.</p>
-            <p class="fragment">For now: PPI does the Request object mediation. (i.e: AuraRouterWrapper)</p>
-        </section>
-        <section>
-            <h2>PSR-7 HTTP Message Interface</h2>
-                <pre> composer.json:<code>"require": {
-    "psr/http-message": "^0.11"
-}</code></pre>
-                    <pre> PPI/Framework/Http/Request.php<code>use Psr\Http\Message\RequestInterface;
-=======
             <h2>What PPI does not do</h2>
 
-            <p class="fragment">It does <strong>*not*</strong> add abstraction on top of existing framework (like Laravel).
+            <p class="fragment">It does
+                <stong>*not*</stong>
+                add abstraction on top of existing framework (like Laravel).
             </p>
 
             <p class="fragment">No re-inventing the wheel</p>
@@ -310,11 +162,6 @@ class RedisCache implements CacheInterface {
             <h2>Benefits of PPI</h2>
 
             <p class="fragment">As PHP grows, PPI will grow.</p>
-        </section>
-
-        <section>
-            <h2>2. How we build it - technical overview</h2>
-
         </section>
 
         <section>
@@ -335,46 +182,21 @@ class RedisCache implements CacheInterface {
         <section>
             <section>
                 <h4>PSR-7 HTTP Message Interface (1)</h4>
-                <p>It's here!</p>
-                <p><img src="images/psr7-tweet-calevans-quorum-has-been-meet.png"></p>
+                <p class="fragment">Yep, it's here!</p>
+                <p class="fragment"><img src="images/psr7-tweet-calevans-quorum-has-been-meet.png"></p>
             </section>
             <section>
                 <h4>PSR-7 HTTP Message Interface (2)</h4>
-                <pre> composer.json:<code>"require": {
+                <pre> composer.json:
+                <code>"require": {
     "psr/http-message": "^0.11"
-}</code></pre>
-                <pre> PPI/Framework/Http/Request.php<code>
-use Psr\Http\Message\RequestInterface;
->>>>>>> private/master
-use Symfony\Component\HttpFoundation\Request as SymfonyHttpRequest;
-
-/**
- * HTTP messages consist of requests from a client to a server and
- * responses from a server to a client. This interface defines the
- * methods common to each.
- */
-class Request extends SymfonyHttpRequest implements RequestInterface
-{
-    // ...
-<<<<<<< HEAD
-} </code></pre></section>
-        <section>
-            <h2>PSR-7 HTTP Message Interface</h2>
-            <p>Want to know more? <span class="fragment">Ask this guy!&nbsp;=>&nbsp;<img src="images/geeh-1.jpg"></span></p>
-        </section>
-
-=======
 }
-                </code></pre>
-                    </pre>
-            </section>
-            <section>
-                <h4>PSR-7 HTTP Message Interface (2)</h4>
-                <p class="fragment">Show Request/Response implements Psr code
-                Want to know more? Ask Gary!</p>
+</code></pre>
 
-                <p class="fragment"><img src="images/geeh-1.jpg"></p>
+                <p class="fragment">Show Request/Response implements Psr code<br>
+                    Want to know more? Ask Gary! (next talk)</p>
             </section>
+
 
         </section>
 
@@ -387,178 +209,36 @@ class Request extends SymfonyHttpRequest implements RequestInterface
                 good!</p>
         </section>
 
-
-
->>>>>>> private/master
         <section>
-            <h4>PPI Module extends ZF2 Module</h4>
-            <p><img src="images/module-structure.png"></p>
+            <h2>Start using PPI</h2>
+
+            <p class="fragment">composer create-project skeletonapp screenshot of Skeletonapp show how to init PPI\App with options</p>
         </section>
 
         <section>
-            <h4>PPI Module With Routers</h4>
-            <p><img src="images/module-structure-with-routers.png"></p>
-        </section>
-
-        <section>
-            <h4>PPI Module With Templating Engines</h4>
-            <p><img src="images/module-structure-with-templating.png"></p>
-        </section>
-
-<<<<<<< HEAD
-        <section>
-            <h4>Object Mediation<br>No abstraction! :-)</h4>
-            <p>No added abstraction on top of existing framework</p>
-            <p><img src="images/object_mediation.png"></p>
-        </section>
-=======
-
->>>>>>> private/master
-
-        <section>
-            <h4>Module1 Rest API Module</h4>
+            <!--<h2>Features</h2>-->
+            <!--<p class="fragment">environments - show config console</p>-->
             <p><img src="images/module1.png"></p>
         </section>
 
         <section>
-            <h4>Module2 MVC Full Stack App</h4>
             <p><img src="images/module2.png"></p>
         </section>
 
         <section>
-            <h4>Module3 MVC Full Stack App</h4>
             <p><img src="images/module3.png"></p>
         </section>
 
-<<<<<<< HEAD
-        <section>
-            <h4>PPI Router</h4>
-            <p class="fragment">We made a routing interoperability layer (Routing PSR?)</p>
-            <p class="fragment">Mediate routing and request information from PPI to Aura (for example)</p>
-            <p class="fragment">If a Routing PSR is created, we get to throw away a lot of code</p>
-        </section>
-
-        <section>
-            <p><img src="images/chain-router.png" width="90%"></p>
-        </section>
-
-        <section data-background="images/starship-troopers.jpg">
-        </section>
-
-        <section>
-            <h2>3. Practical Examples</h2>
-            <h4>Using PPI</h4>
-        </section>
-
-        <section>
-            <p class="fragment">composer create-project -sdev --no-interaction ppi/skeleton-app /var/www/skeleton</p>
-        </section>
-
-        <section>
-            <h4>Application structure</h4>
-            <pre> public/index.php<code>
-                // All relative paths start from the main directory, not from /public/
-                chdir(dirname(__DIR__));
-
-                // Setup autoloading and include PPI
-                require_once 'app/init.php';
-
-                // Set the environment
-                $env     = getenv('PPI_ENV') ?: 'dev';
-                $debug   = getenv('PPI_DEBUG') !== '0'  && $env !== 'prod';
-
-                // Create...
-                $app = new PPI\Framework\App(array(
-                'environment'   => $env,
-                'debug'         => $debug,
-                'rootDir'       => realpath(__DIR__.'/../app')
-                ));
-
-                $app->loadConfig($app->getEnvironment().'/app.php');
-
-                $app->run();
-
-            </code></pre>
-        </section>
-
-
-        <section>
-            <h3>Module Structure</h3>
-            <pre><code>
-                ├── Application
-                │   ├── Module.php
-                │   ├── resources
-                │   │   ├── config
-                │   │   │   └── config.yml
-                │   │   ├── routes
-                │   │   │   ├── aura.php
-                │   │   │   └── symfony.yml
-                │   │   └── views
-                │   │       └── index
-                │   │           ├── index.html.mustache
-                │   │           ├── index.html.php
-                │   │           ├── index.html.smarty
-                │   │           └── index.html.twig
-                │   └── src
-                │       ├── Classes
-                │       │   └── CommunityHelper.php
-                │       ├── Controller
-                │       │   ├── Index.php
-                │       │   └── Shared.php
-            </code></pre>
-        </section>
-
-        <section>
-            <h4>Module Code</h4>
-<pre><code>class Module extends AbstractModule
-{
-    public function getRoutes()
-    {
-        return $this->getSymfonyRoutes();
-        // or
-        return $this->getAuraRoutes();
-    }
-
-    public function getAuraRoutes()
-    {
-        return $this->loadAuraRoutes(__DIR__ . '/resources/routes/aura.php');
-    }
-
-    public function getSymfonyRoutes()
-    {
-        return $this->loadYamlRoutes(__DIR__ . '/resources/routes/symfony.yml');
-    }
-
-    public function getConfig()
-    {
-        return $this->loadConfig(__DIR__ . '/resources/config/config.yml');
-    }
-</code></pre>
-=======
         <section data-background="images/starship-troopers.jpg">
             <!--<h2>Want to know more?</h2>-->
             <!--<p style="text-align: center"><img src="" /></p>-->
         </section>
-
-
-        <section>
-            <h2>3. Practical Examples</h2>
-
-            <h4>Start using PPI</h4>
-
-            <p class="fragment">composer create-project skeletonapp screenshot of Skeletonapp show how to init PPI\App with options</p>
->>>>>>> private/master
-        </section>
-
 
         <!--<section>-->
         <!--<p class="fragment">Gitter / Good old IRC - </p>-->
         <!--<p class="fragment">@ppi_framework // @dr4goonis // @noiselabs - docs.ppi.io (RTFM!)</p>-->
         <!--</section>-->
 
-<<<<<<< HEAD
-
-=======
         <!--<section>-->
         <!--<h2>What's next?</h2>-->
         <!--<p class="fragment">marketplace - show screenshot PSR Cache - show code screenshot</p>-->
@@ -593,7 +273,6 @@ class Request extends SymfonyHttpRequest implements RequestInterface
             </a>
             </section>
         </section>
->>>>>>> private/master
 
         <section>
             <h2>Point of View</h2>
@@ -606,8 +285,6 @@ class Request extends SymfonyHttpRequest implements RequestInterface
                     href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out. </p>
         </section>
 
-<<<<<<< HEAD
-=======
         <section>
             <h2>Touch Optimized</h2>
 
@@ -697,7 +374,6 @@ class Request extends SymfonyHttpRequest implements RequestInterface
             <pre><code>Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
         </section>
 
->>>>>>> private/master
         <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
             <h2>Background Transitions</h2>
 
@@ -739,8 +415,6 @@ class Request extends SymfonyHttpRequest implements RequestInterface
         </section>
 
         <section>
-<<<<<<< HEAD
-=======
             <h2>Tabular Tables</h2>
             <table>
                 <thead>
@@ -771,7 +445,6 @@ class Request extends SymfonyHttpRequest implements RequestInterface
         </section>
 
         <section>
->>>>>>> private/master
             <h2>Clever Quotes</h2>
 
             <p class="fragment">
@@ -787,12 +460,6 @@ class Request extends SymfonyHttpRequest implements RequestInterface
             </blockquote>
         </section>
 
-<<<<<<< HEAD
-
-
-
-
-=======
         <section>
             <h2>Intergalactic Interconnections</h2>
 
@@ -864,7 +531,6 @@ class Request extends SymfonyHttpRequest implements RequestInterface
                     href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
             </p>
         </section>
->>>>>>> private/master
 
     </div>
     <div class='footer'>
