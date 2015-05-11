@@ -3,24 +3,18 @@
 
 <head>
     <meta charset="utf-8">
-
     <title>PPI - The PHP Interoperability Framework</title>
-
     <meta name="description" content="The PHP Interoperability Framework">
     <meta name="author" content="Paul Dragoonis, Vítor Brandão">
-
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-
     <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/presentable.min.css">
     <link rel="stylesheet" href="css/theme/ppi.css" id="theme">
-
     <!-- Code syntax highlighting -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
-
     <!-- Printing and PDF exports -->
     <script>
         var link = document.createElement('link');
@@ -37,11 +31,17 @@
 <div class="reveal">
     <!-- Any section element inside of this container is displayed as a slide -->
     <div class="slides">
-        <section>
-            <img data-src="images/ppi-logo-white.png" id="ppi-logo" width="30%">
 
-            <h2>The PHP Interoperability Framework</h2>
-            <img data-src="images/phpsw-1.jpg" width="25%">
+        <section>
+            <section>
+                <img data-src="images/ppi-logo-white.png" id="ppi-logo" width="30%">
+                <h2>The PHP Interoperability Framework</h2>
+                <img data-src="images/phpsw-1.jpg" width="25%">
+            </section>
+            <section>
+                <h2>Table of Contents</h2>
+                <nav id="presentable-toc" class="revealjs"></nav>
+            </section>
         </section>
 
         <section class="vitor-and-paul">
@@ -50,7 +50,7 @@
                 <h4>Paul Dragoonis</h4>
                 <ul>
                     <li><a href="https://twitter.com/dr4goonis">@dr4goonis</a></li>
-                    <li>QA Lead / Lead Developer at <a href="https://www.kainos.com/">Kainos</a></li>
+                    <li>QA and Developer Lead at <a href="https://www.kainos.com/">Kainos</a></li>
                     <li><a href="http://php.net/">php.net</a> and <a href="http://www.php-fig.org/">PHP-FIG</a> member
                     </li>
                 </ul>
@@ -63,48 +63,45 @@
                     <li><a href="https://twitter.com/noiselabs">@noiselabs</a></li>
                     <li>Bug Squasher at <a href="https://www.kainos.com/">Kainos</a></li>
                     <li>QA at <a href=https://www.gentoo.org/">Gentoo Linux</a></li>
+                    <li>Python to PHP ports</li>
                 </ul>
             </div>
         </section>
 
         <section>
-
             <h2>Agenda</h2>
-
-            <p class="fragment">1. Why it exists? What gap does it fill?</p>
-
-            <p class="fragment">2. How we built it - technical overview</p>
-
-            <p class="fragment">3. Practical examples</p>
-
-
+            <ol>
+                <li class="fragment">Why it exists? What gap does it fill?</li>
+                <li class="fragment">What's inside? - PPI nuts & bolts</li>
+                <li class="fragment">Practical examples</li>
+            </ol>
         </section>
 
-
         <!-- Section 1 -->
-
         <section>
             <h2>1. Why it exists?</h2>
             <h4>What gap does it fill?</h4>
         </section>
 
         <section>
+            <h2>What PPI is not</h2>
+            <p class="fragment">It's <strong>*NOT*</strong> <em>Payment Protection Insurance</em>.</p>
+            <p class="fragment">It's <strong>*NOT*</strong> a framework introducing anything new to you.</p>
+            <p class="fragment">It’s using existing code from existing frameworks that you already know.</p>
+        </section>
+
+        <section>
             <h2>P.P.I.?</h2>
-
-            <p class="fragment">
-                <span class="fragment">Hmm.. what does it stand for?</span>
-            </p>
+            <p class="fragment" data-fragment-index="1">Hmm... what does it stand for?
+                <span class="fragment" data-fragment-index="2">I don't know!</span></p>
             <ul>
-                <li class="fragment"><b style="font-size: larger">P</b>H<b style="font-size: larger;">P</b></li>
-                <li class="fragment"><b style="font-size: larger">I</b>nteroperability</li>
+                <li class="fragment" data-fragment-index="3"><b style="font-size: larger">P</b>HP</li>
+                <li class="fragment" data-fragment-index="5"><b style="font-size: larger">P</b>hramework <img style="vertical-align: middle;" width="80" src="images/troll-face.png"></li>
+                <li class="fragment" data-fragment-index="4"><b style="font-size: larger">I</b>nteroperability</li>
             </ul>
-            <blockquote class="fragment">
-                OH, great, another framework. Did you just create this yesterday?
-            </blockquote>
-            <p class="fragment"><span class="fragment">Yes.</span><span class="fragment">.. actually... no.</span></p>
-
-            <p class="fragment">PPI has been around for more than <b>9</b> years now!</p>
-            <p class="fragment">PPI version 2.0 was released <b>3</b> years ago</p>
+            <p class="fragment" data-fragment-index="6" style="text-align: center;">
+                <img width="40%" src="images/established-2006-2.jpg">
+            </p>
         </section>
 
         <section>
@@ -115,16 +112,18 @@
         <section>
             <h2>Why does PPI exist?</h2>
             <h3>What problems does it solve?</h3>
-
+            <p>&nbsp;</p>
             <p class="fragment">Currently, existing frameworks impose a 1-to-1 relationship between your framework app and the framework
-                vendor</p>
-
+                vendor.</p>
             <p class="fragment">What issues does this cause?</p>
-            <p class="fragment">vendor lock-in</p>
-            <!--you’re locked into choosing packages made by the same vendor as the framework you’re-->
-            <!--using. aka “putting all your eggs in the one basket” - you can’t take your code with you - you can’t-->
-            <!--pull in code from other frameworks and have it mostly just “work” - Gets you “off the island”-->
-
+            <p class="fragment">Vendor lock-in!</p>
+            <aside class="notes">
+                <ol>
+                    <li>You’re locked into choosing packages made by the same vendor as the framework you’re</li>
+                    <li>Using. aka “putting all your eggs in the one basket” - you can’t take your code with you - you can’t</li>
+                    <li>pull in code from other frameworks and have it mostly just “work” - Gets you “off the island”</li>
+                </ol>
+            </aside>
         </section>
 
         <section>
@@ -133,45 +132,32 @@
         </section>
 
         <section>
-            <h4>Example of Vendor Lock-In</h4>
+            <h2>Example of Vendor Lock-In</h2>
             <p class="fragment"><img src="images/vendor-lock-in-example.png"> </p>
         </section>
 
         <section>
-            <h4>Problems with Vendor Lock-In</h4>
-            <p class="fragment">You are tightly coupled to the framework that your app was build on</p>
-            <p class="fragment">You can't move your code between apps on different frameworks</p>
-            <p class="fragment">
-
-                you’re locked into choosing packages made by the same vendor as the framework you’re
-                using. aka “putting all your eggs in the one basket”
-
-                you can’t take your code with you
-            </p>
-
-            <p class="fragment">you can’t pull in code from other frameworks and have it mostly just “work”</p>
-            <p class="fragment">Gets you “off the island”</p>
-
-        </section>
-
-        <section>
-            <h2>What PPI is not</h2>
-
-            <p class="fragment">PPI is <strong>*not*</strong> Payment Protection Insurance</p>
-
-            <p class="fragment">PPI is <strong>*not*</strong> a framework introducing anything new to you.</p>
-
-            <p class="fragment">It’s using existing code from existing frameworks that you already know</p>
-
+            <h2>Problems with Vendor Lock-In</h2>
+            <p class="fragment">You are tightly coupled to the framework that your app was built on.</p>
+            <p class="fragment">You can't move your code between apps on different frameworks.</p>
+            <p class="fragment">Your code belongs to you, not to your framework.</p>
+            <aside class="notes">
+                <ol>
+                    <li>You’re locked into choosing packages made by the same vendor as the framework you’re
+                        using. aka “putting all your eggs in the one basket”</li>
+                    <li>you can’t take your code with you</li>
+                    <li>you can’t pull in code from other frameworks and have it mostly just “work”</li>
+                    <li>Gets you “off the island”</li>
+                </ol>
+            </aside>
         </section>
 
         <section>
             <h2>Benefits of PPI</h2>
+            <p>&nbsp;</p>
             <p class="fragment">Re-usability of knowledge and community effort!</p>
-            <p class="fragment">As PHP grows, PPI will grow (Zend3, Aura3, Symfony3)</p>
+            <p class="fragment">As PHP grows, PPI will grow (Zend3, Aura3, Symfony3).</p>
         </section>
-
-        <section data-background="images/starship-troopers.jpg"></section>
 
         <!-- Section 2 -->
         <section>
@@ -221,7 +207,7 @@ class RedisCache implements CacheInterface {
         </section>
         <section>
             <h2>PSR-7 HTTP Message Interface</h2>
-            <p class="fragment">PPI is PSR-7 ready!</p>
+            <p>PPI is PSR-7 ready!</p>
             <p class="fragment">You can easily adding more libraries into the mix when they implement PSR-7.</p>
             <p class="fragment">For now: PPI does the Request object mediation. (i.e: AuraRouterWrapper)</p>
         </section>
@@ -248,53 +234,50 @@ class Request extends SymfonyHttpRequest implements RequestInterface
         </section>
 
         <section>
-            <h4>PPI Module extends ZF2 Module</h4>
-            <p><img src="images/module-structure.png"></p>
+            <h3>PPI Module extends ZF2 Module</h3>
+            <p><img width="90%" src="images/module-structure.png"></p>
         </section>
 
         <section>
-            <h4>PPI Module With Routers</h4>
-            <p><img src="images/module-structure-with-routers.png"></p>
+            <h3>PPI Module With Routers</h3>
+            <p><img width="90%" src="images/module-structure-with-routers.png"></p>
         </section>
 
         <section>
-            <h4>PPI Module With Templating Engines</h4>
-            <p><img src="images/module-structure-with-templating.png"></p>
+            <h3>PPI Module With Templating Engines</h3>
+            <p><img width="90%" src="images/module-structure-with-templating.png"></p>
         </section>
 
         <section>
-            <h4>Object Mediation<br>No abstraction! :-)</h4>
-            <p>No added abstraction on top of existing framework</p>
-            <p><img src="images/object_mediation.png"></p>
+            <h3>Object Mediation - No abstraction! :-)</h3>
+            <p>No added abstraction on top of existing framework.</p>
+            <p><img width="90%" src="images/object_mediation.png"></p>
         </section>
 
         <section>
-            <h4>Module1 Rest API Module</h4>
-            <p><img src="images/module1.png"></p>
+            <h3>Module1 Rest API Module</h3>
+            <p><img width="90%" src="images/module1.png"></p>
         </section>
 
         <section>
-            <h4>Module2 MVC Full Stack App</h4>
-            <p><img src="images/module2.png"></p>
+            <h3>Module2 MVC Full Stack App</h3>
+            <p><img width="90%" src="images/module2.png"></p>
         </section>
 
         <section>
-            <h4>Module3 MVC Full Stack App</h4>
-            <p><img src="images/module3.png"></p>
+            <h3>Module3 MVC Full Stack App</h3>
+            <p><img width="90%" src="images/module3.png"></p>
         </section>
 
         <section>
-            <h4>PPI Router</h4>
-            <p class="fragment">We made a routing interoperability layer (Routing PSR?)</p>
-            <p class="fragment">Mediate routing and request information from PPI to Aura (for example)</p>
+            <h2>PPI Router</h2>
+            <p class="fragment">We made a routing interoperability layer (Routing PSR?).</p>
+            <p class="fragment">Mediate routing and request information from PPI to Aura (for example).</p>
             <p class="fragment">If a Routing PSR is created, we get to throw away a lot of code</p>
         </section>
 
         <section>
             <p><img src="images/chain-router.png" width="90%"></p>
-        </section>
-
-        <section data-background="images/starship-troopers.jpg">
         </section>
 
         <section>
@@ -303,172 +286,104 @@ class Request extends SymfonyHttpRequest implements RequestInterface
         </section>
 
         <section>
-            <p class="fragment">composer create-project -sdev --no-interaction ppi/skeleton-app /var/www/skeleton</p>
+            <h2>Installation</h2>
+            <p><pre>Step 1:<code class="bash">
+    $ composer create-project -sdev --no-interaction \
+        ppi/skeleton-app /var/www/skeleton
+            </code></pre></p>
+            <p><pre>Step 2: There is no step.</pre><code></code></pre></p>
         </section>
 
         <section>
-            <h4>Application structure</h4>
+            <h3>Application structure</h3>
             <pre> public/index.php<code>
-                // All relative paths start from the main directory, not from /public/
-                chdir(dirname(__DIR__));
+    &lt;?php
 
-                // Setup autoloading and include PPI
-                require_once 'app/init.php';
+    // Setup autoloading and include PPI
+    require_once 'app/init.php';
 
-                // Set the environment
-                $env     = getenv('PPI_ENV') ?: 'dev';
-                $debug   = getenv('PPI_DEBUG') !== '0'  && $env !== 'prod';
+    // Set the environment
+    $env     = getenv('PPI_ENV') ?: 'dev';
+    $debug   = getenv('PPI_DEBUG') !== '0'  && $env !== 'prod';
 
-                // Create...
-                $app = new PPI\Framework\App(array(
-                'environment'   => $env,
-                'debug'         => $debug,
-                'rootDir'       => realpath(__DIR__.'/../app')
-                ));
+    // Create and configure the Application
+    $app = new PPI\Framework\App(array(
+        'environment'   => $env,
+        'debug'         => $debug,
+        'rootDir'       => realpath(__DIR__.'/../app')
+    ));
+    $app->loadConfig($app->getEnvironment().'/app.php');
 
-                $app->loadConfig($app->getEnvironment().'/app.php');
-
-                $app->run();
-
+    // Handle requests
+    $app->run();
             </code></pre>
         </section>
-
-
         <section>
             <h3>Module Structure</h3>
             <pre><code>
-                ├── Application
-                │   ├── Module.php
-                │   ├── resources
-                │   │   ├── config
-                │   │   │   └── config.yml
-                │   │   ├── routes
-                │   │   │   ├── aura.php
-                │   │   │   └── symfony.yml
-                │   │   └── views
-                │   │       └── index
-                │   │           ├── index.html.mustache
-                │   │           ├── index.html.php
-                │   │           ├── index.html.smarty
-                │   │           └── index.html.twig
-                │   └── src
-                │       ├── Classes
-                │       │   └── CommunityHelper.php
-                │       ├── Controller
-                │       │   ├── Index.php
-                │       │   └── Shared.php
+    Application
+    |
+    ├── Module.php
+    ├── resources
+    │   ├── config
+    │   │   └── config.yml
+    │   ├── routes
+    │   │   ├── aura.php
+    │   │   └── symfony.yml
+    │   └── views
+    │       └── index
+    │           ├── index.html.mustache
+    │           ├── index.html.php
+    │           ├── index.html.smarty
+    │           └── index.html.twig
+    └── src
+        ├── Classes
+        │   └── CommunityHelper.php
+        ├── Controller
+        │   ├── Index.php
+        │   └── Shared.php
             </code></pre>
         </section>
 
         <section>
-            <h4>Module Code</h4>
-<pre><code>class Module extends AbstractModule
+            <h3>Module Code</h3>
+<pre><code>class Module extends AbstractModule implements ModuleInterface
 {
-    public function getRoutes()
-    {
+    public function getRoutes() {
         return $this->getSymfonyRoutes();
         // or
         return $this->getAuraRoutes();
     }
 
-    public function getAuraRoutes()
-    {
+    public function getAuraRoutes() {
         return $this->loadAuraRoutes(__DIR__ . '/resources/routes/aura.php');
     }
 
-    public function getSymfonyRoutes()
-    {
+    public function getSymfonyRoutes() {
         return $this->loadYamlRoutes(__DIR__ . '/resources/routes/symfony.yml');
     }
 
-    public function getConfig()
-    {
+    public function getConfig() {
         return $this->loadConfig(__DIR__ . '/resources/config/config.yml');
     }
 </code></pre>
         </section>
 
-
-        <!--<section>-->
-        <!--<p class="fragment">Gitter / Good old IRC - </p>-->
-        <!--<p class="fragment">@ppi_framework // @dr4goonis // @noiselabs - docs.ppi.io (RTFM!)</p>-->
-        <!--</section>-->
-
-
+        <section data-background="images/starship-troopers.jpg"></section>
 
         <section>
-            <h2>Point of View</h2>
-
-            <p class="fragment">
-                Press <strong>ESC</strong> to enter the slide overview. </p>
-
-            <p class="fragment">
-                Hold down alt and click on any element to zoom in on it using <a
-                    href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out. </p>
-        </section>
-
-        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-            <h2>Background Transitions</h2>
-
-            <p class="fragment">
-                You can override background transitions per-slide. </p>
-            <pre><code style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
+            <p>Gitter / Good old IRC - </p>
+            <p>@ppi_framework // @dr4goonis // @noiselabs - docs.ppi.io (RTFM!)</p>
         </section>
 
         <section>
-            <h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable> function linkify( selector ) { if( supports3DTransforms ) {
-
-                        var nodes = document.querySelectorAll( selector );
-
-                        for( var i = 0, len = nodes.length; i &lt; len; i++ ) { var node = nodes[i];
-
-                        if( !node.className ) { node.className += ' roll'; } } } } </code></pre>
-            <p class="fragment">Code syntax highlighting courtesy of <a
-                    href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
         </section>
-
-        <section>
-            <h2>Marvelous List</h2>
-            <ul>
-                <li>No order here</li>
-                <li>Or here</li>
-                <li>Or here</li>
-                <li>Or here</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Fantastic Ordered List</h2>
-            <ol>
-                <li>One is smaller than...</li>
-                <li>Two is smaller than...</li>
-                <li>Three!</li>
-            </ol>
-        </section>
-
-        <section>
-            <h2>Clever Quotes</h2>
-
-            <p class="fragment">
-                These guys come in two forms, inline: <q
-                    cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-                &ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-            </p>
-            <blockquote
-                    cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-                &ldquo;For years there has been a theory that millions of monkeys typing at random on millions of
-                typewriters would reproduce the entire works of Shakespeare. The Internet has proven this theory to be
-                untrue.&rdquo;
-            </blockquote>
-        </section>
-
-
-
-
-
-
     </div>
+    <aside id="presentable-icon" class="revealjs">
+        <a title="Table of Contents" href="#/0/1">
+            <img alt="Table of Contents" src="images/revealjs.png"/>
+        </a>
+    </aside>
     <div class='footer'>
         <a href="https://twitter.com/ppi_framework">@ppi_framework</a>
     </div>
@@ -476,7 +391,8 @@ class Request extends SymfonyHttpRequest implements RequestInterface
 </div>
 
 <script src="lib/js/head.min.js"></script>
-<script src="js/reveal.js"></script>
+<script src="js/reveal.min.js"></script>
+<script src="js/presentable.min.js"></script>
 <script>
     // Full list of configuration options available at:
     // https://github.com/hakimel/reveal.js#configuration
@@ -485,7 +401,9 @@ class Request extends SymfonyHttpRequest implements RequestInterface
         progress: true,
         history: true,
         center: true,
-
+        slideNumber: true,
+        minScale: 0.2,
+        maxScale: 1.5,
         transition: 'slide', // none/fade/slide/convex/concave/zoom
         transitionSpeed: 'default', // default/fast/slow
 
@@ -514,7 +432,10 @@ class Request extends SymfonyHttpRequest implements RequestInterface
             }
             },
             {src: 'plugin/zoom-js/zoom.js', async: true},
-            {src: 'plugin/notes/notes.js', async: true}
+            {src: 'plugin/notes/notes.js', async: true},
+            {
+                src: 'js/presentable.min.js', callback: function() { presentable.toc({framework: "revealjs"}); }
+            }
         ]
     });
 </script>
