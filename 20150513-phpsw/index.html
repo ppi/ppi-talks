@@ -11,7 +11,6 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
     <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/presentable.min.css">
     <link rel="stylesheet" href="css/theme/ppi.css" id="theme">
     <!-- Code syntax highlighting -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
@@ -23,7 +22,6 @@
         link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
         document.getElementsByTagName('head')[0].appendChild(link);
     </script>
-
     <!--[if lt IE 9]>
     <script src="lib/js/html5shiv.js"></script>        <![endif]-->
 </head>
@@ -33,15 +31,9 @@
     <div class="slides">
 
         <section>
-            <section>
-                <img data-src="images/ppi-logo-white.png" id="ppi-logo" width="30%">
-                <h2>The PHP Interoperability Framework</h2>
-                <img data-src="images/phpsw-1.jpg" width="25%">
-            </section>
-            <section>
-                <h2>Table of Contents</h2>
-                <nav id="presentable-toc" class="revealjs"></nav>
-            </section>
+            <img data-src="images/ppi-logo-white.png" id="ppi-logo" width="30%">
+            <h2>The PHP Interoperability Framework</h2>
+            <img data-src="images/phpsw-1.jpg" width="25%">
         </section>
 
         <section class="vitor-and-paul">
@@ -63,7 +55,7 @@
                     <li><a href="https://twitter.com/noiselabs">@noiselabs</a></li>
                     <li>Bug Squasher at <a href="https://www.kainos.com/">Kainos</a></li>
                     <li>QA at <a href=https://www.gentoo.org/">Gentoo Linux</a></li>
-                    <li>Python to PHP ports</li>
+                    <li>Python2PHP ports</li>
                 </ul>
             </div>
         </section>
@@ -71,23 +63,34 @@
         <section>
             <h2>Agenda</h2>
             <ol>
-                <li class="fragment">Why it exists? What gap does it fill?</li>
+                <li class="fragment">About PPI?</li>
                 <li class="fragment">What's inside? - PPI nuts & bolts</li>
                 <li class="fragment">Practical examples</li>
             </ol>
         </section>
 
-        <!-- Section 1 -->
         <section>
-            <h2>1. Why it exists?</h2>
-            <h4>What gap does it fill?</h4>
+            <h2>Thank you PHP community!</h2>
+            <ol style="list-style-type: disc;">
+                <li>Evan Coury (<a href="#">EvanDotPro</a>)</li>
+                <li>Matthew Weier O'Phinney (<a href="#">mwop</a>)</li>
+                <li>Jakub Zalas (<a href="#">jakub_zalas</a>)</li>
+                <li>Ben Tadiar (<a href="#">BenExile</a>)</li>
+                <li>Rob Allen (<a href="#">akrabat</a>)</li>
+                <li>Gary Hockin (<a href="#">GeeH</a>)</li>
+                <li>Ben Scholzen (<a href="#">DASPRiD</a>)</li>
+                <li>Paul M Jones (<a href="#">pmjones</a>)</li>
+                <li>Fabien Potencier (<a href="#">fabpot</a>)</li>
+                <li>Taylor Otwell (<a href="#">taylorotwell</a>)</li>
+            </ol>
         </section>
+
+        <!-- Section 1 -->
 
         <section>
             <h2>What PPI is not</h2>
             <p class="fragment">It's <strong>*NOT*</strong> <em>Payment Protection Insurance</em>.</p>
             <p class="fragment">It's <strong>*NOT*</strong> a framework introducing anything new to you.</p>
-            <p class="fragment">It’s using existing code from existing frameworks that you already know.</p>
         </section>
 
         <section>
@@ -102,6 +105,12 @@
             <p class="fragment" data-fragment-index="6" style="text-align: center;">
                 <img width="40%" src="images/established-2006-2.jpg">
             </p>
+        </section>
+
+        <section>
+            <p style="text-align: center;">Tonight:</p>
+            <p>&nbsp;</p>
+            <h2>PPI v2</h2>
         </section>
 
         <section>
@@ -131,16 +140,17 @@
             <p><img src="images/vendor-lock-in.png"></p>
         </section>
 
+        <!--
         <section>
             <h2>Example of Vendor Lock-In</h2>
             <p class="fragment"><img src="images/vendor-lock-in-example.png"> </p>
         </section>
+        -->
 
         <section>
             <h2>Problems with Vendor Lock-In</h2>
             <p class="fragment">You are tightly coupled to the framework that your app was built on.</p>
             <p class="fragment">You can't move your code between apps on different frameworks.</p>
-            <p class="fragment">Your code belongs to you, not to your framework.</p>
             <aside class="notes">
                 <ol>
                     <li>You’re locked into choosing packages made by the same vendor as the framework you’re
@@ -156,6 +166,8 @@
             <h2>Benefits of PPI</h2>
             <p>&nbsp;</p>
             <p class="fragment">Re-usability of knowledge and community effort!</p>
+            <p class="fragment">It’s using existing code from existing frameworks that you already know.</p>
+            <p class="fragment">Your app code belongs to you, not to your framework.</p>
             <p class="fragment">As PHP grows, PPI will grow (Zend3, Aura3, Symfony3).</p>
         </section>
 
@@ -181,14 +193,14 @@
         </section>
 
         <section>
-            <h2>PSRs - What's in // what's coming?</h2>
+            <h2>PSR - What's in // what's coming?</h2>
             <p class="fragment half"><img src="images/psr7-accepted.png"></p>
             <p class="fragment half"><img src="images/psr7-review.png"></p>
         </section>
 
         <section>
-            <h2>PSR-6 Caching Interface</h2>
-            <p>In production for over 1 year now, but PSR-6 still not finished.</p>
+            <h2>PSR-6: Caching Interface</h2>
+            <p>In production for over 2 years now, but PSR-6 still not finished.</p>
             <p><code><pre>
 namespace PPI\CacheModule\Cache\Driver;
 
@@ -202,17 +214,20 @@ class RedisCache implements CacheInterface {
         </section>
 
         <section>
-            <h2>PSR-7 HTTP Message Interface</h2>
-            <p><img src="images/psr7-tweet-calevans-quorum-has-been-meet.png"></p>
-        </section>
-        <section>
-            <h2>PSR-7 HTTP Message Interface</h2>
+            <h2>PSR-7: HTTP Message Interface</h2>
             <p>PPI is PSR-7 ready!</p>
             <p class="fragment">You can easily adding more libraries into the mix when they implement PSR-7.</p>
-            <p class="fragment">For now: PPI does the Request object mediation. (i.e: AuraRouterWrapper)</p>
+            <p class="fragment">When consuming frameworks like (ZF2, SF2, Aura2) - that don't support PSR-7 yet - PPI bridges the gap for you.</p>
         </section>
+
         <section>
-            <h2>PSR-7 HTTP Message Interface</h2>
+            <h2>PSR-7: Can We Haz Quorum?</h2>
+            <p><img src="images/psr7-tweet-calevans-quorum-has-been-meet.png"></p>
+            <p>\o/</p>
+        </section>
+
+        <section>
+            <h2>PSR-7: Request Interface</h2>
                 <pre> composer.json:<code>"require": {
     "psr/http-message": "^0.11"
 }</code></pre>
@@ -229,8 +244,9 @@ class Request extends SymfonyHttpRequest implements RequestInterface
     // ...
 } </code></pre></section>
         <section>
-            <h2>PSR-7 HTTP Message Interface</h2>
-            <p>Want to know more? <span class="fragment">Ask this guy!&nbsp;=>&nbsp;<img src="images/geeh-1.jpg"></span></p>
+            <h2>PSR-7: Want to know more?</h2>
+            <p class="fragment" style="text-align: center">Don't ask us. Ask this guy!</p>
+            <p class="fragment" style="text-align: center"><img src="images/geeh-1.jpg"></p>
         </section>
 
         <section>
@@ -287,11 +303,21 @@ class Request extends SymfonyHttpRequest implements RequestInterface
 
         <section>
             <h2>Installation</h2>
+            <p>21st century. Use composer:</p>
             <p><pre>Step 1:<code class="bash">
     $ composer create-project -sdev --no-interaction \
         ppi/skeleton-app /var/www/skeleton
             </code></pre></p>
-            <p><pre>Step 2: There is no step.</pre><code></code></pre></p>
+            <p>and for your convenience:</p>
+            <p><pre>Step 2<code>
+    $ vagrant up ppi-lamp
+        </code></pre>
+            <p>and now...</p>
+        </section>
+
+        <section data-background="images/skeletonapp-preview.png" data-background-size="100%" >
+            <h2>Skeleton App</h2>
+            <p>&nbsp;</p>
         </section>
 
         <section>
@@ -372,18 +398,23 @@ class Request extends SymfonyHttpRequest implements RequestInterface
         <section data-background="images/starship-troopers.jpg"></section>
 
         <section>
-            <p>Gitter / Good old IRC - </p>
-            <p>@ppi_framework // @dr4goonis // @noiselabs - docs.ppi.io (RTFM!)</p>
+            <h2>Let's chat?</h2>
+            <p>&nbsp;</p>
+            <ul style="line-height: 180%;">
+                <li>Gitter: <a href="https://gitter.im/ppi/chat">gitter.im/ppi/chat</a></li>
+                <li>Good ol'IRC: <a href="irc://chat.freenode.net:port/channel?ppi">freenode#ppi</a></li>
+                <li><a href="https://twitter.com/ppi_framework">@ppi_framework</a></li>
+                <li><a href="https://twitter.com/dr4goonis">@dr4goonis</a></li>
+                <li><a href="https://twitter.com/noiselabs">@noiselabs</a></li>
+            </ul>
         </section>
 
         <section>
+            <h2>Thanks.</h2>
+            <p>&nbsp;</p>
+            <p style="text-align: center;">Questions?</p>
         </section>
     </div>
-    <aside id="presentable-icon" class="revealjs">
-        <a title="Table of Contents" href="#/0/1">
-            <img alt="Table of Contents" src="images/revealjs.png"/>
-        </a>
-    </aside>
     <div class='footer'>
         <a href="https://twitter.com/ppi_framework">@ppi_framework</a>
     </div>
@@ -433,9 +464,6 @@ class Request extends SymfonyHttpRequest implements RequestInterface
             },
             {src: 'plugin/zoom-js/zoom.js', async: true},
             {src: 'plugin/notes/notes.js', async: true},
-            {
-                src: 'js/presentable.min.js', callback: function() { presentable.toc({framework: "revealjs"}); }
-            }
         ]
     });
 </script>
