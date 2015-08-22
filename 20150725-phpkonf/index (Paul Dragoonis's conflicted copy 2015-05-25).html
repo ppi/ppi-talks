@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>PPI - The PHP Interoperability Framework</title>
+    <meta name="description" content="The PHP Interoperability Framework">
+    <meta name="author" content="Paul Dragoonis, Vítor Brandão">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/ppi.css" id="theme">
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>        <![endif]-->
+</head>
+<body>
+<div class="reveal">
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+
+        <section>
+            <img data-src="images/ppi-logo-white.png" id="ppi-logo" width="30%">
+            <h2>The PHP Interoperability Framework</h2>
+            <img data-src="images/phpsw-1.jpg" width="25%">
+        </section>
+
+        <section class="vitor-and-paul">
+            <ul style="display: block;" class="clearfix">
+                <li class="half">
+                    <img src="images/dr4goonis.jpg" class="avatar">
+                    <h4>Paul Dragoonis</h4>
+                    <ul>
+                        <li><a href="https://twitter.com/dr4goonis">@dr4goonis</a></li>
+                        <li>QA and Developer Lead at <a href="https://www.kainos.com/">Kainos</a></li>
+                        <li><a href="http://php.net/">php.net</a> and <a href="http://www.php-fig.org/">PHP-FIG</a> member
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="half">
+                    <img src="images/noiselabs.jpg" class="avatar">
+                    <h4>Vítor Brandão</h4>
+                    <ul>
+                        <li><a href="https://twitter.com/noiselabs">@noiselabs</a></li>
+                        <li>Bug Squasher at <a href="https://www.kainos.com/">Kainos</a></li>
+                        <li>QA at <a href=https://www.gentoo.org/">Gentoo Linux</a></li>
+                        <li>Python to PHP ports</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section style="page-break-before: always; clear: both;" class="clearfix">
+            <h2>Agenda</h2>
+            <ol>
+                <li class="fragment">About PPI?</li>
+                <li class="fragment">What's inside? - PPI nuts & bolts</li>
+                <li class="fragment">Practical examples</li>
+            </ol>
+        </section>
+
+        <section style="page-break-before: always; clear: both;" class="clearfix">
+            <h2>Thank you PHP community!</h2>
+            <ol>
+                <li>Evan Coury (EvanDotPro)</li>
+                <li>Matthew Weier O'Phinney (mwop)</li>
+                <li>Jakub Zalas (jakub_zalas)</li>
+                <li>Ben Tadiar (BenExile)</li>
+                <li>Rob Allen (akrabat)</li>
+                <li>Gary Hockin (GeeH)</li>
+                <li>Ben Scholzen (DASPRiD)</li>
+                <li>Paul M Jones (pmjones)</li>
+                <li>Fabien Potencier (fabpot)</li>
+                <li>Taylor Otwell (taylorotwell)</li>
+            </ol>
+        </section>
+
+        <!-- Section 1 -->
+
+        <section>
+            <h2>What PPI is not</h2>
+            <p class="fragment">It's <strong>*NOT*</strong> <em>Payment Protection Insurance</em>.</p>
+            <p class="fragment">It's <strong>*NOT*</strong> a framework introducing anything new to you.</p>
+
+        </section>
+
+        <section>
+            <h2>P.P.I.?</h2>
+            <p class="fragment" data-fragment-index="1">Hmm... what does it stand for?
+                <span class="fragment" data-fragment-index="2">I don't know!</span></p>
+            <ul>
+                <li class="fragment" data-fragment-index="3"><b style="font-size: larger">P</b>HP</li>
+                <li class="fragment" data-fragment-index="5"><b style="font-size: larger">P</b>hramework <img style="vertical-align: middle;" width="80" src="images/troll-face.png"></li>
+                <li class="fragment" data-fragment-index="4"><b style="font-size: larger">I</b>nteroperability</li>
+            </ul>
+            <p class="fragment" data-fragment-index="6" style="text-align: center;">
+                <img width="40%" src="images/established-2006-2.jpg">
+            </p>
+        </section>
+
+        <section>
+            <img src="images/which-is-the-best-quality-ppi.png" width="80%">
+            <blockquote>PPI PHP Meta Framework is the best PPI PHP Meta Framework!</blockquote>
+        </section>
+
+        <section>
+            <h2>Why does PPI exist?</h2>
+            <h3>What problems does it solve?</h3>
+            <p>&nbsp;</p>
+            <p class="fragment">Currently, existing frameworks impose a 1-to-1 relationship between your framework app and the framework
+                vendor.</p>
+            <p class="fragment">What issues does this cause?</p>
+            <p class="fragment">Vendor lock-in!</p>
+            <aside class="notes">
+                <ol>
+                    <li>You’re locked into choosing packages made by the same vendor as the framework you’re</li>
+                    <li>Using. aka “putting all your eggs in the one basket” - you can’t take your code with you - you can’t</li>
+                    <li>pull in code from other frameworks and have it mostly just “work” - Gets you “off the island”</li>
+                </ol>
+            </aside>
+        </section>
+
+        <section>
+            <h2>Vendor Lock-In</h2>
+            <p><img src="images/vendor-lock-in.png"></p>
+        </section>
+
+        <section>
+            <h2>Example of Vendor Lock-In</h2>
+            <p class="fragment"><img src="images/vendor-lock-in-example.png"> </p>
+        </section>
+
+        <section>
+            <h2>Problems with Vendor Lock-In</h2>
+            <p class="fragment">You are tightly coupled to the framework that your app was built on.</p>
+            <p class="fragment">You can't move your code between apps on different frameworks.</p>
+            <aside class="notes">
+                <ol>
+                    <li>You’re locked into choosing packages made by the same vendor as the framework you’re
+                        using. aka “putting all your eggs in the one basket”</li>
+                    <li>you can’t take your code with you</li>
+                    <li>you can’t pull in code from other frameworks and have it mostly just “work”</li>
+                    <li>Gets you “off the island”</li>
+                </ol>
+            </aside>
+        </section>
+
+        <section>
+            <h2>Benefits of PPI</h2>
+            <p>&nbsp;</p>
+            <p class="fragment">Re-usability of knowledge and community effort!</p>
+            <p class="fragment">It’s using existing code from existing frameworks that you already know.</p>
+            <p class="fragment">Your app code belongs to you, not to your framework.</p>
+            <p class="fragment">As PHP grows, PPI will grow (Zend3, Aura3, Symfony3).</p>
+        </section>
+
+        <!-- Section 2 -->
+        <section>
+            <h2>2. What's inside?</h2>
+            <h4>PPI nuts & bolts</h4>
+            <p><img src="images/ppi-engine-breakdown.png" width="90%"></p>
+        </section>
+
+        <section>
+            <h2>Leverage PHP-FIG standards</h2>
+            <aside class="notes">
+                <ol>
+                    <li>PPI takes advantage of PHP Standard Recommendations to provide an environment where 3rd-party
+                        code can be plugged-in and work with zero rewrites.</li>
+                    <li>Early adopt PSR standards and provide a real-life Proof of Concept for these standards.</li>
+                </ol>
+            </aside>
+            <p class="fragment">A friendly environment for swappable 3rd-party components.</p>
+            <p class="fragment">Components may be PSR-ready or potential candidates (<span class="pre">Router</span>).</p>
+            <p class="fragment">Spearhead PHP-FIG concepts and ideas with a real-life POC for these standards.</p>
+        </section>
+
+        <section>
+            <h2>PSR - What's in // what's coming?</h2>
+            <p class="fragment half"><img src="images/psr7-accepted.png"></p>
+            <p class="fragment half"><img src="images/psr7-review.png"></p>
+        </section>
+
+        <section>
+            <h2>PSR-6: Caching Interface</h2>
+            <p>In production for over 2 years now, but PSR-6 still not finished.</p>
+            <p><code><pre>
+namespace PPI\CacheModule\Cache\Driver;
+
+use PPI\CacheModule\Cache\CacheItem;
+use PPI\CacheModule\Cache\CacheInterface;
+
+class RedisCache implements CacheInterface {
+    // ...
+}</pre></code></p>
+            <p>Other implementations: <span class="pre">APC, Disk, Memcached, Memory, Xcache</span>.</p>
+        </section>
+
+        <section>
+            <h2>PSR-7: HTTP Message Interface</h2>
+            <p>PPI is PSR-7 ready!</p>
+            <p class="fragment">You can easily adding more libraries into the mix when they implement PSR-7.</p>
+            <p class="fragment">When consuming frameworks like (ZF2, SF2, Aura2) - that don't support PSR-7 yet - PPI bridges the gap for you.</p>
+        </section>
+
+        <section>
+            <h2>PSR-7: Can We Haz Quorum?</h2>
+            <p><img src="images/psr7-tweet-calevans-quorum-has-been-meet.png"></p>
+            <p>\o/</p>
+        </section>
+
+        <section>
+            <h2>PSR-7: Request Interface</h2>
+                <pre> composer.json:<code>"require": {
+    "psr/http-message": "^0.11"
+}</code></pre>
+                    <pre> PPI/Framework/Http/Request.php<code>use Psr\Http\Message\RequestInterface;
+use Symfony\Component\HttpFoundation\Request as SymfonyHttpRequest;
+
+/**
+ * HTTP messages consist of requests from a client to a server and
+ * responses from a server to a client. This interface defines the
+ * methods common to each.
+ */
+class Request extends SymfonyHttpRequest implements RequestInterface
+{
+    // ...
+} </code></pre></section>
+        <section>
+            <h2>PSR-7: Want to know more?</h2>
+            <p class="fragment" style="text-align: center">Ask this guy!</p>
+            <p class="fragment" style="text-align: center"><img src="images/geeh-1.jpg"></p>
+        </section>
+
+        <section>
+            <h3>PPI Module extends ZF2 Module</h3>
+            <p><img width="90%" src="images/module-structure.png"></p>
+        </section>
+
+        <section>
+            <h3>PPI Module With Routers</h3>
+            <p><img width="90%" src="images/module-structure-with-routers.png"></p>
+        </section>
+
+        <section>
+            <h3>PPI Module With Templating Engines</h3>
+            <p><img width="90%" src="images/module-structure-with-templating.png"></p>
+        </section>
+
+        <section>
+            <h3>Object Mediation - No abstraction! :-)</h3>
+            <p>No added abstraction on top of existing framework.</p>
+            <p><img width="90%" src="images/object_mediation.png"></p>
+        </section>
+
+        <section>
+            <h3>Module1 Rest API Module</h3>
+            <p><img width="90%" src="images/module1.png"></p>
+        </section>
+
+        <section>
+            <h3>Module2 MVC Full Stack App</h3>
+            <p><img width="90%" src="images/module2.png"></p>
+        </section>
+
+        <section>
+            <h3>Module3 MVC Full Stack App</h3>
+            <p><img width="90%" src="images/module3.png"></p>
+        </section>
+
+        <section>
+            <h2>PPI Router</h2>
+            <p class="fragment">We made a routing interoperability layer (Routing PSR?).</p>
+            <p class="fragment">Mediate routing and request information from PPI to Aura (for example).</p>
+            <p class="fragment">If a Routing PSR is created, we get to throw away a lot of code</p>
+        </section>
+
+        <section>
+            <p><img src="images/chain-router.png" width="90%"></p>
+        </section>
+
+        <section>
+            <h2>3. Practical Examples</h2>
+            <h4>Using PPI</h4>
+        </section>
+
+        <section>
+            <h2>Installation</h2>
+            <p><pre>Step 1:<code class="bash">
+    $ composer create-project -sdev --no-interaction \
+        ppi/skeleton-app /var/www/skeleton
+            </code></pre></p>
+            <p><pre>Step 2<code>
+    $ vagrant up
+        </code></pre>
+        </section>
+
+        <section data-background="images/skeletonapp-preview.png" data-background-size="100%" >
+            <h2>Skeleton App</h2>
+            <p>&nbsp;</p>
+        </section>
+
+        <section>
+            <h3>Application structure</h3>
+            <pre> public/index.php<code>
+    &lt;?php
+
+    // Setup autoloading and include PPI
+    require_once 'app/init.php';
+
+    // Set the environment
+    $env     = getenv('PPI_ENV') ?: 'dev';
+    $debug   = getenv('PPI_DEBUG') !== '0'  && $env !== 'prod';
+
+    // Create and configure the Application
+    $app = new PPI\Framework\App(array(
+        'environment'   => $env,
+        'debug'         => $debug,
+        'rootDir'       => realpath(__DIR__.'/../app')
+    ));
+    $app->loadConfig($app->getEnvironment().'/app.php');
+
+    // Handle requests
+    $app->run();
+            </code></pre>
+        </section>
+        <section>
+            <h3>Module Structure</h3>
+            <pre><code>
+    Application
+    |
+    ├── Module.php
+    ├── resources
+    │   ├── config
+    │   │   └── config.yml
+    │   ├── routes
+    │   │   ├── aura.php
+    │   │   └── symfony.yml
+    │   └── views
+    │       └── index
+    │           ├── index.html.mustache
+    │           ├── index.html.php
+    │           ├── index.html.smarty
+    │           └── index.html.twig
+    └── src
+        ├── Classes
+        │   └── CommunityHelper.php
+        ├── Controller
+        │   ├── Index.php
+        │   └── Shared.php
+            </code></pre>
+        </section>
+
+        <section>
+            <h3>Module Code</h3>
+<pre><code>class Module extends AbstractModule implements ModuleInterface
+{
+    public function getRoutes() {
+        return $this->getSymfonyRoutes();
+        // or
+        return $this->getAuraRoutes();
+    }
+
+    public function getAuraRoutes() {
+        return $this->loadAuraRoutes(__DIR__ . '/resources/routes/aura.php');
+    }
+
+    public function getSymfonyRoutes() {
+        return $this->loadYamlRoutes(__DIR__ . '/resources/routes/symfony.yml');
+    }
+
+    public function getConfig() {
+        return $this->loadConfig(__DIR__ . '/resources/config/config.yml');
+    }
+</code></pre>
+        </section>
+
+        <section data-background="images/starship-troopers.jpg"></section>
+
+        <section>
+            <h2>Let's chat!</h2>
+            <p>&nbsp;</p>
+            <ul style="line-height: 180%">
+                <li>Gitter: <a href="https://gitter.im/ppi/chat">gitter.im/ppi/chat</a></li>
+                <li>Good ol'IRC: <a href="irc://chat.freenode.net:port/channel?ppi">freenode#ppi</a></li>
+                <li><a href="https://twitter.com/ppi_framework">@ppi_framework</a></li>
+                <li><a href="https://twitter.com/dr4goonis">@dr4goonis</a></li>
+                <li><a href="https://twitter.com/noiselabs">@noiselabs</a></li>
+            </ul>
+        </section>
+    </div>
+    <div class='footer'>
+        <a href="https://twitter.com/ppi_framework">@ppi_framework</a>
+    </div>
+
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+<script src="js/presentable.min.js"></script>
+<script>
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
+        minScale: 0.2,
+        maxScale: 1.5,
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        transitionSpeed: 'default', // default/fast/slow
+
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/highlight/highlight.js', async: true, condition: function () {
+                return !!document.querySelector('pre code');
+            }, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'plugin/zoom-js/zoom.js', async: true},
+            {src: 'plugin/notes/notes.js', async: true},
+        ]
+    });
+</script>
+</body>
+</html>
