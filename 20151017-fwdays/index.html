@@ -667,8 +667,8 @@ class Module
     {
         return ['factories' => [
             'post.manager' => function($sm) {
-                $helper = new PostManagerModule\Classes\SliderManager();
-                $helper->setPostStorage($sm->get('slider.storage'));
+                $helper = new PostManagerModule\Classes\PostManager();
+                $helper->setPostStorage($sm->get('post.storage'));
                 return $helper;
             },
             'post.storage' => function($sm) {
