@@ -1,0 +1,972 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>PPI - The PHP Interoperability Framework</title>
+    <meta name="description" content="The PHP Interoperability Framework">
+    <meta name="author" content="Paul Dragoonis, Vítor Brandão">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/ppi.css" id="theme">
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>        <![endif]-->
+</head>
+<body>
+<div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+
+
+              <section>
+                  <img data-src="images/ppi-logo-white.png" id="ppi-logo" width="20%">
+                  <h4>The PHP Framework Engine</h4>
+                  <h2>Unleashing Frameworks</h2>
+                  <img data-src="images/glasgowphp.png" id="ppi-logo" width="80%">
+              </section>
+
+
+
+        <section>
+            <div class="">
+                <img src="images/dr4goonis.jpg" class="avatar">
+                <h4>Paul Dragoonis</h4>
+                <ul>
+                    <li class="fragment">Full-Stack Software Consultant &amp; QA Analyst</li>
+                    <li class="fragment">From PHP-FIG, PHP Core / Extensions, PHP.net</li>
+                    <li class="fragment">Lead developer of PPI</li>
+                    <li class="fragment">Using PHP since 2001</li>
+
+                    <li class="fragment">T: <a href="https://twitter.com/dr4goonis">@dr4goonis</a> / <a href="https://twitter.com/ppi_framework">@ppi_framework</a></li>
+                    <li class="fragment">E: <a href="">dragoonis@php.net</a> / <a href="">paul@ppi.io</a></li>
+                </ul>
+            </div>
+            <aside class="notes">Paul<aside>
+        </section>
+
+        <section>
+            <h2>Message of PPI</h2>
+            <p class="fragment" data-fragment-index="1">Frameworks are very <strong>powerful</strong>!</p>
+            <p class="fragment" data-fragment-index="2">but.. they come at a <strong>cost</strong></p>
+            <p class="fragment">Amount of Cost = how you use and depend on frameworks</p>
+        </section>
+
+        <section>
+            <h2>Today</h2>
+            <p class="fragment">Showing you how to unleash the power of not just 1 framework, but many!</p>
+            <p class="fragment">How that benefits you, your team/company/project/customer</p>
+        </section>
+
+        <section>
+            <h2>What are the costs?</h2>
+            <p class="fragment">Vendor lock-in! (technical debt)</p>
+            <p class="fragment">This means:</p>
+            <p class="fragment">Your app is tightly coupled to one framework</p>
+            <p class="fragment">Hard to switch to a new framework</p>
+            <p class="fragment">Hard to move code between apps, on different frameworks</p>
+            <!-- <p class="fragment">Limited technology stack</p> -->
+            <!-- <p class="fragment">Limited team experience</p> -->
+            <!-- <p class="fragment">Limited POWER!!!</p> -->
+        </section>
+
+        <section style="">
+            <h2>What is P.P.I.?</h2>
+            <p class="fragment" data-fragment-index="1">Hmm... what does PPI stand for?
+                <span class="fragment" data-fragment-index="2">Not much, but we can be creative!</span></p>
+            <ul>
+                <li class="fragment" data-fragment-index="3" style="text-align: left"><b style="font-size: larger">P</b>HP</li>
+                <li class="fragment" data-fragment-index="5" style="text-align: left"><b style="font-size: larger">P</b>hramework <img style="vertical-align: middle; width: 100px;" src="images/troll-face.png"></li>
+                <li class="fragment" data-fragment-index="4" style="text-align: left"><b style="font-size: larger">I</b>nteroperability</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>What is PPI?</h2>
+            <p class="fragment">It's not a framework</p>
+            <p class="fragment">It's a framework delivery engine</p>
+            <p class="fragment">It delivers core parts of frameworks to your app</p>
+            <p class="fragment">Individually, to the features of your app</p>
+        </section>
+
+        <section>
+            <h2>What you can use PPI as?</h2>
+            <p class="fragment">An engine that you can boot() up.</p>
+            <p class="fragment">Inside existing/legacy apps, to modernise them</p>
+            <p class="fragment">Inside CMS' like wordpress</p>
+            <p class="fragment">A standalone application with dispatch() for HTTP</p>
+            <aside class="notes">
+              <ul>
+                  <li>Who has legacy app that they wish they could modernise? They is your key out of jail.</li>
+              </ul>
+            <aside>
+        </section>
+
+<section>
+  <h2>Typical problem with frameworks</section>
+</section>
+
+<!-- OF PROJECT JOURNEY -->
+        <section>
+            <h3>Common Path of a project</h3>
+            <p class="fragment">Step 1: customer tells you what they want (kind of)</p>
+            <p class="fragment">Step 2: you choose a framework/toolkit that suits that project</p>
+            <p class="fragment">Step 3: you build it</p>
+        </section>
+
+        <section>
+            <h2>What happens next?</h2>
+            <p class="fragment">Step 4: customer changes their mind on what they want</p>
+            <p class="fragment">Step 5: the tool you chose in the beginning, is no longer the correct one</p>
+            <p class="fragment">Step 6: you can't switch because you're locked into that vendor</p>
+            <p class="fragment">Step 7: you stick with the tool because it's too difficult to <strong>switch</strong> to the correct tool</p>
+        </section>
+
+        <section>
+            <h3>It's not your fault!</h3>
+            <p class="fragment">You're not psychic! You cannot predict the future</p>
+            <p class="fragment">but, you can prepare for it :-)</p>
+            <h2 class="fragment">How?</h2>
+
+        </section>
+
+        <section>
+          <h3>PPI prepares you for change.</h3>
+          <h3>It's designed for change.</h3>
+        </section>
+
+        <section>
+            <h3>How does PPI help you with change?</h3>
+            <p class="fragment">Your app code belongs to you, not to your framework.</p>
+            <p class="fragment">PPI let's you make framework decisions on a <u>per-feature</u> basis, not per-app</p>
+        </section>
+
+        <section>
+          <h3>This means</h3>
+          <p class="fragment">When your features grow / evolve / change</p>
+          <p class="fragment">You can change your features independently</p>
+        </section>
+<!-- END OF PROJECT JOURNEY -->
+
+        <!-- <section>
+          <h3>Reasons to pick a framework</h3>
+          <ul>
+            <li class="fragment">your current team</li>
+            <li class="fragment">your project budget and deadline</li>
+            <li class="fragment">the customer's team</li>
+            <li class="fragment">your existing code</li>
+            <li class="fragment">technical match with the most important <strong>feature</strong> (today)</li>
+          </ul>
+          <aside class="notes">
+              <ol>
+                  <li>Pideon hole'ing, trying to fit one framework to suit diverse requirements</li>
+              </ol>
+          </aside>
+        </section> -->
+
+
+
+        <!-- <section>
+            <h4>Object Mediation - No abstraction! :-)</h4>
+            <p>No added abstraction on top of existing framework.</p>
+            <p><center><img width="80%" src="images/object_mediation.png"></center></p>
+        </section> -->
+
+<!-- Framework Characteristict -->
+        <section>
+            <h4>Choosing a framework</h4>
+            <center><img src="images/fw-characteristics.png" width="80%" /></center>
+        </section>
+
+        <section>
+            <h4>Symfony</h4>
+            <center><img src="images/chars/symfony.png" width="80%" /></center>
+        </section>
+
+        <section>
+            <h4>Zend</h4>
+            <center><img src="images/chars/zend.png" width="80%" /></center>
+        </section>
+
+        <section>
+            <h4>Zend vs Symfony</h4>
+            <center><img src="images/chars/symfony-zend.png" width="80%" /></center>
+        </section>
+
+        <section>
+            <h4>Laravel</h4>
+            <center><img src="images/chars/laravel.png" width="80%" /></center>
+        </section>
+
+        <section>
+            <h4>Zend vs Symfony vs Laravel</h4>
+            <center><img src="images/chars/symfony-laravel-zend.png" width="80%" /></center>
+        </section>
+
+        <section>
+            <h4>Phalcon</h4>
+            <center><img src="images/chars/phalcon.png" width="80%" /></center>
+        </section>
+
+        <section>
+            <h4>Which one to choose?</h4>
+            <center><img src="images/chars/all-fworks.png" width="80%" /></center>
+        </section>
+
+        <section>
+            <h2>As many of them as you like!</h2>
+    </section>
+
+
+<!-- END OF FRAMEWORK CHARACTERISTICS -->
+
+<!-- USING FRAMEWORKS -->
+
+
+        <section>
+            <h3>Using Frameworks Directly</h3>
+            <p>Cost is influenced by <strong>how</strong> you use and rely on them</p>
+            <p><center><img src="images/using-frameworks-directly.png" width="87%"></center></p>
+        </section>
+
+        <section>
+            <h2>Using Frameworks In PPI</h2>
+            <p><center><img src="images/diagrams/using-fw-in-ppi.png" width="100%"></center></p>
+
+            <aside class="notes">
+              <ul>
+                <li>Removes the architecture and habits of a framework, and delivers you feature parts as components</li>
+                <li>Let's you define your own architecture with these fwork components</li>
+              </ul>
+            </aside>
+
+        </section>
+
+        <section>
+            <p>Two features with different requirements</p>
+            <div class="half">
+              <p>Feature A (backend cms)</p><img src="images/chars/feature-a.png" />
+            </div>
+            <div class="half">
+              <p>Feature B (frontend)</p><img src="images/chars/feature-b.png" />
+            </div>
+        </section>
+
+<!-- END USING FRAMEWORKS -->
+
+
+
+
+       <!--  <section>
+            <h2>Development Roadmap</h2>
+            <p>todo: enter the dates</p>
+            <p>PPI 2.0 started. Feb 25, 2012</p>
+            <p>Vitor joined October 14, 2012</p>
+            <p>PPI 2.1.0-alpha1</p>b
+            <p>PPI 2.1.0-alpha2</p>
+            <p>PPI 2.1.0-alpha3</p>
+        </section>
+ -->
+<!--         <section>
+
+
+            <p class="fragment">What issues does this cause?</p>
+            <p class="fragment">Vendor lock-in!</p>
+            <aside class="notes">
+                <ol>
+                    <li>You’re locked into choosing packages made by the same vendor as the framework you’re Using</li>
+                    <li>. aka “putting all your eggs in the one basket” - you can’t take your code with you - you can’t</li>
+                    <li>pull in code from other frameworks and have it mostly just “work” - Gets you “off the island”</li>
+                </ol>
+            </aside>
+        </section> -->
+
+        <!--
+        <section>
+            <h2>Example of Vendor Lock-In</h2>
+            <p class="fragment"><img src="images/vendor-lock-in-example.png"> </p>
+        </section>
+        -->
+
+<!--         <section>
+            <h2>Problems with Vendor Lock-In</h2>
+            <aside class="notes">
+                <ol>
+                    <li>you can’t take your code with you</li>
+                    <li>you can’t pull in code from other frameworks and have it mostly just “work”</li>
+                    <li>Gets you “off the island”</li>
+                </ol>
+            </aside>
+        </section> -->
+
+        <!-- <section> -->
+            <!-- <h2>When you use PPI</h2> -->
+
+<!-- <p>Preparing you for change in the future</p> -->
+<!-- <p>Allowing you to change</p> -->
+            <!-- <p class="fragment">Re-usability of knowledge and community effort!</p> -->
+            <!-- <p class="fragment">It’s using existing code from existing frameworks that you already know.</p> -->
+
+            <!-- <p class="fragment">As PHP grows, PPI will grow (Zend3, Aura3, Symfony3).</p> -->
+        <!-- </section> -->
+
+        <!-- Section 2 -->
+
+        <section>
+            <h2>Questions?</h2>
+        </section>
+
+        <section>
+            <h3>Powered by solid components</h3>
+            <p><img src="images/ppi-engine-breakdown.png" width="90%"></p>
+        </section>
+
+
+        <section>
+            <h3>PSR Interfaces</h3>
+            <p>PPI is a PSR-aware framework</p>
+            <p>PSR-0, PSR-1, PSR-2, PSR-3, PSR-4, PSR-7</p>
+        </section>
+
+        <section>
+            <h3>What's inside the PPI Engine?</h3>
+                <pre style="width: 80%"> composer.json:<code>"require": {
+        "psr/log": "~1.0",
+        "psr/http-message": "^0.11",
+
+        "symfony/config": "~2.7",
+        "symfony/console": "~2.7",
+        "symfony/debug": "~2.7",
+        "symfony/finder": "~2.7",
+        "symfony/yaml": "~2.7",
+
+        "zendframework/zend-eventmanager": "~2.3",
+        "zendframework/zend-modulemanager": "~2.3",
+        "zendframework/zend-servicemanager": "~2.3",
+
+        "symfony/framework-bundle": "~2.7",
+        "symfony/http-foundation": "~2.7",
+        "symfony/http-kernel": "~2.7"
+    }</code></pre>
+        </section>
+
+        <section>
+          <h2>When you include PPI</h2>
+            <pre style="width: 80%"> composer.json:<code>
+"require": {
+    "ppi/framework": "~2.1"
+}
+            </code></pre>
+</section>
+
+        <section>
+            <h2>PPI is Modular by design</h2>
+            <p>You only need to add what you need</p>
+            <p>Need templating?</p>
+            <pre>composer.json<code>
+"ppi/smarty-module": "~1.0",
+"ppi/twig-module": "~1.0",
+"ppi/mustache-module": "~1.0"
+</code></pre>
+</section>
+
+<section>
+<h2>Need routing?</h2>
+<pre>composer.json<code>
+"ppi/laravel-routing": "~1.0"
+"ppi/aura-routing": "~1.0"
+"ppi/symfony-routing": "~1.0"
+</code></pre>
+</section>
+
+<section>
+  <h2>Need Databases Bindings?</h2>
+  <pre>composer.json<code>
+"ppi/datasource-module": "~1.0" // LaravelDB, Eloquent, Doctrine ..etc
+</code></pre>
+</section>
+
+        <!-- <section>
+            <h2>PSR's</h2>
+            <p class="fragment">Spearhead PHP-FIG concepts and ideas with a real-life usage for these standards.</p>
+            <p class="fragment">We built our own interop layers first, then backport them to PHP-FIG.</p>
+            <p class="fragment">A friendly environment for swappable 3rd-party components.</p>
+
+            <aside class="notes">
+                Early adopt PSR standards and provide a real-life Proof of Concept for these standards.
+            </aside>
+        </section> -->
+
+        <section>
+          <h2>Booting up PPI</h2>
+              <pre><code>
+    &lt;php
+    $app = new PPI\App(['env' => 'prod']);
+    $app->loadConfig($app->getEnvironment().'/app.yml');
+    $app->boot();
+              </code></pre>
+        </section>
+
+        <section>
+            <h2>What's inside the app.yml file</h2>
+              <pre>app.yml<code>
+modules:
+    - Framework
+    - CmsModule
+    - FrontendModule
+    - ApiModule
+</code></pre>
+        </section>
+
+        <section>
+            <h2>Defining engines to use</h2>
+              <pre>app.yml<code>
+modules:
+    - Framework
+    - CmsModule
+    - FrontendModule
+    - ApiModule
+
+framework:
+    templating:
+        engines: ["php", "smarty", "twig", "mustache", "plates", "latte"]
+
+</code></pre>
+        </section>
+
+        <section>
+            <h2>Extended config</h2>
+            <pre>app.yml<code>
+    imports:
+        - { resource: modules.yml }
+
+    framework:
+        templating:
+            engines: ["php", "smarty", "twig"]
+        skeleton_module:
+            path: "./utils/skeleton_module"
+
+    monolog:
+        handlers:
+            main:
+                type:  stream
+                path:  %app.logs_dir%/%app.environment%.log
+                level: debug
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>Modules (features)</h2>
+        </section>
+
+                <section>
+<h2>Module configuration</h2>
+                  <pre><code>
+&lt;?php
+namespace PropertyModule;
+class Module extends AbstractModule
+{
+    public function getConfig()
+    {
+        return $this->loadConfig(__DIR__ . '/../resources/config/config.yml');
+    }
+}
+                  </pre></code>
+        </section>
+
+        <section>
+          <h2>Services</h2>
+          <p>Simple &amp; lightweight, using ZF2 ServiceManager</p>
+          <pre><code>
+&lt;?php
+namespace PropertyModule;
+class Module extends AbstractModule
+{
+    public function getServiceConfig()
+    {
+        return ['factories' => [
+            'property.images.service' => PropertyImagesFactory::class,
+            'property.seller.service' => PropertySellersFactory::class,
+            'property.branch.service' => PropertyBranchesFactory::class
+        ]];
+    }
+}
+          </pre></code>
+</section>
+
+<section>
+    <h2>A service factory</h2>
+              <pre><code>
+&lt;?php
+namespace PropertyModule\Factory;
+
+use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\FactoryInterface;
+use PropertyModule\Service\LetterService;
+
+class PropertyLettersFactory implements FactoryInterface
+{
+    public function createService(ServiceLocatorInterface $sm)
+    {
+        return new LetterService($sm->get('Doctrine\ORM\EntityManager'));
+    }
+
+}
+              </pre></code>
+</section>
+        <section>
+            <h2>Calling the service</h2>
+          <pre><code>
+&lt;?php
+$branchService = $app->getService('property.branch.service');
+var_dump($branchService); // object(LetterService)
+          </pre></code>
+        </section>
+
+        <section>
+            <h2>Rendering templates</h2>
+          <pre><code>
+    PropertyModule
+    |
+    ├── Module.php
+    ├── resources
+    │   ├── config
+    │   │   └── config.yml
+    │   └── views
+    │       └── index
+    │           └── index.html.twig
+    │           └── index.html.smarty
+    │           └── index.html.plates
+          </pre></code>
+        </section>
+
+        <section>
+            <h2>Rendering templates</h2>
+          <pre><code>
+&lt;?php
+$output = $app->getService('templating')
+              ->render('PropertyModule:index:index.html.php');
+          </pre></code>
+        </section>
+
+
+        <section>
+            <h2>Doing HTTP</h2>
+        </section>
+
+        <section>
+            <h2>Doing HTTP - Middleware</h2>
+<pre><code>
+&lt;php
+$app = new PPI\App(['env' => 'prod']);
+$app->loadConfig($app->getEnvironment().'/app.php');
+$app->boot();
+$response = $app->dispatch($request, $response);
+$response->send(); // or echo $response->getContent();
+</pre></code>
+        </section>
+
+        <section>
+            <h2>Doing HTTP - Standalone</h2>
+<pre><code>
+&lt;php
+$app = new PPI\App(['env' => 'prod']);
+$app->loadConfig($app->getEnvironment().'/app.php');
+$app->boot()->run();
+</pre></code>
+        </section>
+
+<section>
+    <h3>Routing</h3>
+<pre><code>
+&lt;?php
+class Module extends AbstractModule
+{
+  public function getRoutes() {
+    return $this->loadAuraRoutes(__DIR__ . '/resources/routes/aura.php');
+    return $this->loadSymfonyRoutes(__DIR__ . '/resources/routes/symfony.yml');
+    return $this->loadLaravelRoutes(__DIR__ . '/resources/routes/laravel.php');
+    return $this->loadFastRouteRoutes(__DIR__ . '/resources/routes/fastroute.routes.php');
+  }
+}
+</code></pre>
+</section>
+
+    <section>
+            <h3>Symfony routes work in PPI</h3>
+<pre><code>
+Homepage:
+  pattern:  /
+  defaults: { _controller: "PropertyModule:Index:index"}
+
+</code></pre>
+        </section>
+
+        <section>
+            <h2>Controllers</h2>
+                <pre> composer.json:<code>
+&lt?php
+namespace PropertyModule\Controller;
+use PPI\Framework\Module\Controller as BaseController;
+use PPI\Framework\Http\Request;
+
+class Mycontroller extends BaseController
+{
+    public function indexAction(Request $request)
+    {
+        if ('POST' === $request->getMethod()) { }
+
+        $someService = $this->getService('property.service');
+        $someParams = $someService->getSomeParams();
+
+        return $this->render('PropertyModule:index:index.html.twig',
+            compact('someParams')
+        );
+    }
+}
+</code></pre>
+</section>
+
+
+    <section>
+            <h3>Symfony routes with params</h3>
+<pre><code>
+DocsIndex:
+    pattern:  /docs/{ver}/{page}.html
+    defaults: { _controller: "PropertyModule:Docs:index", ver: "2.0"}
+
+</code></pre>
+        </section>
+
+
+        <section>
+            <h2>Controllers</h2>
+                <pre> composer.json:<code>
+&lt?php
+namespace PropertyModule\Controller;
+
+use PPI\Framework\Module\Controller as BaseController;
+use PPI\Framework\Http\Request;
+
+class Mycontroller extends BaseController
+{
+    public function indexAction(Request $request, $ver, $page)
+    {
+        if ('POST' === $request->getMethod()) {
+            // do POST stuff
+        }
+        return $this->render('PropertyModule:index:index.html.twig',
+            compact('ver', 'page')
+        );
+    }
+}
+</code></pre>
+</section>
+
+
+<section>
+  <h4>Using PPI as a container, in existing systems</h4>
+      <pre>public/index.php<code>
+$loader = require_once '/path/to/ppi/app/init.php';
+$ppiApp = new PPI\Framework\App([
+    'rootDir' => __DIR__ . '/../dashboard/app'
+]);
+$ppiApp->loadConfig($ppiApp->getEnvironment() . '/app.php');
+$ppiApp->boot();
+$container = $ppiApp->getServiceManager();
+ppi($container);
+      </code></pre>
+</section>
+
+<section>
+  <h2>Using the container</h2>
+      <pre><code>
+function ppi($id)
+{
+    static $container;
+    if ($id instanceof ContainerInterface) {
+        $container = $id;
+        return;
+    }
+    return $container->get($id);
+}
+      </code></pre>
+</section>
+
+<section>
+  <h2>Using the container</h2>
+      <pre><code>
+&lt;?php
+get_header();
+global $wp_query;
+?>
+&lt;h1&gt; Property List &lt;/h1&gt;
+&lt;?php
+$service = ppi('property.service');
+$criteria = new TWG\Criteria\Property();
+if(isset($_GET['num_bedrooms'])) {
+    $criteria->setNumBedrooms($_GET['num_bedrooms']);
+}
+$properties = $service->findProperties($criteria);
+
+foreach($properties as $property):
+      </code></pre>
+</section>
+
+        <section>
+            <h2>Questions?</h2>
+        </section>
+
+        <section>
+            <h2>Using PPI Skeleton App</h2>
+            <p>PPI website .. download .. skeleton app</p>
+            <p>PPI docs .. installation</p>
+            <pre><code>
+$ vagrant up
+        </code></pre>
+        </section>
+
+
+
+        <!-- <section>
+            <h2>PPI Router</h2>
+            <p class="fragment">We made a routing interoperability layer (Routing PSR?).</p>
+            <p class="fragment">If a Routing PSR is created, we get to throw away a lot of code</p>
+        </section>
+
+        <section>
+            <p><img src="images/chain-router.png" width="90%"></p>
+        </section> -->
+
+        <!-- <section>
+            <h3>Front controller</h3>
+            <pre> public/index.php<code>
+    &lt;?php
+    require_once 'app/init.php';
+
+    // Create and configure the Application
+    $app = new PPI\Framework\App(array(
+        'environment'   => 'dev',
+        'debug'         => $true,
+        'rootDir'       => realpath(__DIR__.'/../app')
+    ));
+    $app->loadConfig($app->getEnvironment().'/app.php');
+
+    // Just Boot, no HTTP
+    $app->boot()
+
+    // OR: Handle requests
+    $app->run();
+            </code></pre>
+        </section> -->
+
+        <section>
+            <h2>Skeleton App</a>
+            <img src="images/skeletonapp-preview-master.png" width="100%">
+        </section>
+
+        <section>
+            <h3>$ app/console</h3>
+            <img src="images/cli-check.png" width="70%">
+        </section>
+
+<!--
+        <section>
+          <h3>Laravel routes work in PPI</h3>
+<pre><code>
+use PPI\Framework\Router\LaravelRouter;
+use Psr\Http\Message\RequestInterface as R;
+/**
+ * @var LaravelRouter $router
+ */
+ $router->get('/', [
+    'as' => 'Homepage',
+    'uses' => 'Application\Controller\LaravelExampleController@index'
+]);
+
+$router->get('/example', 'Application\Controller\LaravelExampleController@index');
+
+</code></pre>
+</section> -->
+
+
+
+        <section>
+            <h2>Console commands</h2>
+            <pre><code>
+$ app/console
+
+PPI version 2.1.1-DEV
+Available commands:
+ assets
+  assets:install         Installs modules public assets under a public directory
+ cache
+  cache:clear            Clears the cache
+ config
+  config:debug           Dumps the configuration in use
+ debug
+  debug:router           Displays current routes for an application
+ module
+  module:create          Create a module
+  module:list            Displays information about the currently loaded modules
+ router
+  router:debug           Displays current routes for an application
+  router:match           Helps debug routes by simulating a path info match
+ service-manager
+  service-manager:debug  Displays current services for an application
+        </code></pre>
+        </section>
+
+<section>
+        <h2>Module create wizard</h2>
+
+        <pre><code>
+$ app/console module:create GlasgowPHPModule
+Where is the modules dir?
+  [1] /Users/dragoonis/code/ppi/skeletonapp/modules
+ >
+Choose your templating engine [php]
+  [1] php
+  [2] twig
+  [3] smarty
+  [4] plates
+  [5] latte
+ > 2
+Choose your routing engine [symfony]
+  [1] symfony
+  [2] aura
+  [3] laravel
+  [4] fastroute
+ > 4
+ </code></pre>
+ </section>
+
+ <section>
+         <h2>Module create wizard</h2>
+                 <pre><code>
+Created module successfully
+Name: GlasgowPHPModule
+Routing: fastroute
+Templating: twig
+Path: /Users/dragoonis/code/ppi/skeletonapp/modules/GlasgowPHPModule
+
+This module is not enabled.
+    Enable it in config[modules] key
+    
+Twig is not an enabled templating engine.
+    Add twig it in config[framework][templating][engines] key
+
+Twig doesn't appear to be loaded.
+    Run: composer require ppi/twig-module
+
+FastRoute Router doesn't appear to be loaded.
+    Run: composer require ppi/fast-route
+        </code></pre>
+        </section>
+
+        <section>
+          <h2>Experimental Live Demo</h2>
+        </section>
+
+        <section>
+            <h2>Progress</h2>
+            <p class="fragment">PPI is ready for you to build projects in.</p>
+            <p class="fragment">We are now in version 2.1.1 - go use it!</p>
+        </section>
+
+        <section>
+            <h2>Recap</h2>
+            <p class="fragment">PPI prepares you for change. It's <strong>DESIGNED</strong> for change.</p>
+            <p class="fragment">Be in control of your own app, change when you need to</p>
+            <p class="fragment">Ultimately, by using PPI you're  frameworks from this ...</p>
+        </section>
+
+        <section>
+            <p><img src="images/star-wars.jpg"></p>
+        </section>
+
+        <section>
+            <p><img src="images/jedi_alliance.jpg"></p>
+        </section>
+
+        <section>
+            <h2>Thank you Glasgow!</h2>
+        </section>
+
+        <section>
+            <ul style="line-height: 180%;">
+                <!-- <li>Please Rate The Talk!</li> -->
+                <li>Documentation: <a href="http://docs.ppi.io">http://docs.ppi.io</a></li>
+                <li>Gitter: <a href="https://gitter.im/ppi/framework">ppi.io/chat</a></li>
+                <li>Twitter: <a href="https://twitter.com/ppi_framework">@ppi_framework</a></li>
+            </ul>
+        </section>
+
+    </div>
+    <div class='footer'>
+        <a href="https://twitter.com/ppi_framework">@ppi_framework</a> | GlasgowPHP 2016
+    </div>
+
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+<script src="js/presentable.min.js"></script>
+<script>
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
+        minScale: 0.2,
+        maxScale: 1.5,
+        transition: 'none', // none/fade/slide/convex/concave/zoom
+        transitionSpeed: 'default', // default/fast/slow
+
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/highlight/highlight.js', async: true, condition: function () {
+                return !!document.querySelector('pre code');
+            }, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'plugin/zoom-js/zoom.js', async: true},
+            {src: 'plugin/notes/notes.js', async: true},
+        ]
+    });
+</script>
+</body>
+</html>
