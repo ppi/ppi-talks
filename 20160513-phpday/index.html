@@ -36,7 +36,7 @@
                   <img data-src="images/ppi-logo-white.png" id="ppi-logo" width="20%">
                   <h4>The PHP Framework Engine</h4>
                   <h2>Unleashing Frameworks</h2>
-                  <img data-src="images/phpminds-logo.png" id="ppi-logo" width="70%">
+                  <img data-src="images/logo_phpday.png" id="ppi-logo" width="40%">
               </section>
 
         <section>
@@ -44,12 +44,10 @@
                 <img src="images/dr4goonis.jpg" class="avatar">
                 <h4>Paul Dragoonis</h4>
                 <ul>
-                    <li class="fragment">Full-Stack Software Consultant &amp; QA Analyst</li>
-                    <li class="fragment">From Glasgow (a weegie :-)</li>
-                    <li class="fragment">From PHP-FIG, PHP Core / Extensions, PHP.net</li>
-                    <li class="fragment">Lead developer of PPI</li>
-                    <li class="fragment">Using PHP since 2001 (me love it long time)</li>
-                    <li class="fragment"></li>
+                    <li class="fragment">Full-Stack Software Consultant</li>
+                    <li class="fragment">From Scotland</li>
+                    <li class="fragment">Involved with php.net, php extensions, php-fig</li>
+
                 </ul>
             </div>
             <aside class="notes">Paul<aside>
@@ -94,8 +92,6 @@
 
         <section>
             <h2>What is PPI?</h2>
-            <p class="fragment">It's not Payment Protection Insurance (FML)</p>
-            <p class="fragment">Nobody outside of the UK knows what PPI insurance is, phew!</p>
             <p class="fragment">It's not a framework</p>
             <p class="fragment">It's a framework delivery engine</p>
             <p class="fragment">It delivers core parts of frameworks to your app</p>
@@ -131,8 +127,8 @@
         <section>
             <h2>What happens next?</h2>
             <p class="fragment">4. customer changes their mind on what they want</p>
-            <p class="fragment">5. the tool you chose in the beginning, is no longer the correct one</p>
-            <p class="fragment">6. you can't switch because it's too difficult to switch to a different tool.</p>
+            <p class="fragment">5. the framework you chose in the beginning, is no longer the correct one</p>
+            <p class="fragment">6. you can't switch because it's vendor lock-in</p>
         </section>
 
         <section>
@@ -226,7 +222,7 @@
 
         <section>
             <h4>Which one to choose?</h4>
-            <h3>The one(s) that best suite your requirements / experience / project</h3>
+            <h5>The one(s) that best suite your requirements / experience / project</h5>
         </section>
 
 
@@ -320,10 +316,6 @@
         <!-- Section 2 -->
 
         <section>
-            <h2>Questions?</h2>
-        </section>
-
-        <section>
             <h3>Powered by solid components</h3>
             <p><img src="images/ppi-engine-breakdown.png" width="90%"></p>
         </section>
@@ -361,7 +353,7 @@
           <h2>When you include PPI</h2>
             <pre style="width: 80%"> composer.json:<code>
 "require": {
-    "ppi/framework": "~2.1"
+    "ppi/framework": "^2.1"
 }
             </code></pre>
 </section>
@@ -402,7 +394,7 @@ modules:
         <section>
             <h2>Modules (features)</h2>
         </section>
-
+<!--
                 <section>
 <h2>Register your module's namespace</h2>
                   <pre><code>
@@ -422,7 +414,7 @@ class Module extends AbstractModule
     }
 }
                   </pre></code>
-        </section>
+        </section> -->
 
                 <section>
                   <h2>Module configuration</h2>
@@ -484,13 +476,13 @@ namespace PropertyModule\Factory;
 
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\ServiceManager\FactoryInterface;
-use PropertyModule\Service\LetterService;
+use PropertyModule\Service\SellerService;
 
-class PropertyLettersFactory implements FactoryInterface
+class PropertySellerFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $sm)
     {
-        return new LetterService($sm->get('Doctrine\ORM\EntityManager'));
+        return new SellerService($sm->get('Doctrine\ORM\EntityManager'));
     }
 
 }
@@ -500,8 +492,8 @@ class PropertyLettersFactory implements FactoryInterface
             <h2>Calling the service</h2>
           <pre><code>
 &lt;?php
-$branchService = $app->getService('property.branch.service');
-var_dump($branchService); // object(LetterService)
+$sellerService = $app->getService('property.seller.service');
+var_dump($sellerService); // object(SellerService)
           </pre></code>
         </section>
 
@@ -548,9 +540,12 @@ framework:
     │   │   └── config.yml
     │   └── views
     │       └── index
+    │           └── index.html.php
     │           └── index.html.twig
     │           └── index.html.smarty
     │           └── index.html.plates
+    │           └── index.html.mustache
+    │           └── index.html.latte
           </pre></code>
         </section>
 
@@ -730,8 +725,23 @@ class Index extends BaseController
 </section>
 
 <section>
-    <p><img src="images/chain-router.png" width="90%"></p>
+    <p><img src="images/chain-router.png" width="80%"></p>
 </section>
+
+        <section>
+            <h2>Using the chain router</h2>
+<pre><code>
+&lt;php
+$modules = $moduleManager->loadModules();
+$chainRouter = new PPI\Framework\Router\ChainRouter();
+foreach($modules as $module) {
+    $chainRouter->add($module->getRoutes());
+}
+
+$matchResult = $chainRouter->matchRequest($request);
+
+</pre></code>
+        </section>
 
         <section>
             <h2>Doing HTTP - Middleware</h2>
@@ -758,75 +768,13 @@ $content = $response->getContent();
 &lt;php
 $app = new PPI\App(['env' => 'prod']);
 $app->loadConfig($app->getEnvironment().'/app.php');
-$app->boot()->run();
+$app->run();
 
 </pre></code>
         </section>
 
 
-<section>
-    <h2>Use your existing app as a container</h2>
-</section>
 
-<section>
-  <h4>Using PPI as a container, in existing systems</h4>
-      <pre>public/index.php<code>
-$loader = require_once '/path/to/ppi/app/init.php';
-$ppiApp = new PPI\Framework\App([
-    'rootDir' => __DIR__ . '/../dashboard/app'
-]);
-$ppiApp->loadConfig($ppiApp->getEnvironment() . '/app.yml');
-$ppiApp->boot();
-
-$container = $ppiApp->getServiceManager();
-
-// Register your container, globally
-ppi($container);
-
-      </code></pre>
-</section>
-
-<section>
-  <h2>Using the container</h2>
-      <pre><code>
-function ppi($id)
-{
-    static $container;
-    if ($id instanceof ContainerInterface) {
-        $container = $id;
-        return;
-    }
-    return $container->get($id);
-}
-      </code></pre>
-</section>
-
-<section>
-  <h2>Using the container</h2>
-      <pre><code>
-&lt;?php
-get_header();
-global $wp_query;
-?>
-&lt;h1&gt;Property List&lt;/h1&gt;
-&lt;?php
-
-$service = ppi('property.service');
-$criteria = new PropertyModule\Criteria();
-
-if(isset($_GET['num_bedrooms'])) {
-    $criteria->setNumBedrooms($_GET['num_bedrooms']);
-}
-$properties = $service->findProperties($criteria);
-
-foreach($properties as $property):
-
-      </code></pre>
-</section>
-
-        <section>
-            <h2>Questions?</h2>
-        </section>
 
         <section>
             <h2>Using PPI Skeleton App</h2>
@@ -929,7 +877,7 @@ Available commands:
         <h2>Module create wizard</h2>
 
         <pre><code>
-$ app/console module:create PHPMiNDSModule
+$ app/console module:create PHPDayModule
 Where is the modules dir?
   [1] /Users/dragoonis/code/ppi/skeletonapp/modules
  >
@@ -953,10 +901,10 @@ Choose your routing engine [symfony]
          <h2>Module create wizard</h2>
                  <pre><code>
 Created module successfully
-Name: PHPMiNDSModule
+Name: PHPDayModule
 Routing: fastroute
 Templating: twig
-Path: /Users/dragoonis/code/ppi/skeletonapp/modules/PHPMiNDSModule
+Path: /Users/dragoonis/code/ppi/skeletonapp/modules/PHPDayModule
 
 This module is not enabled.
     Enable it in config[modules] key
@@ -973,8 +921,93 @@ FastRoute Router doesn't appear to be loaded.
         </section>
 
         <section>
-          <h2>Experimental Live Demo</h2>
+          <h2>Can I haz shiny new features plz!?!1!?!11</h2>
         </section>
+
+
+
+        <section>
+            <h4>PPI app as a container</4h>
+            <p><img src="images/ppi-zf-sf-boot-model.jpg"></p>
+        </section>
+
+// Create...
+$app = new PPI\Framework\App(array(
+    'environment'   => $env,
+    'debug'         => $debug,
+    'rootDir'       => realpath(__DIR__.'/../app'),
+));
+
+// ...configure...
+$app->loadConfig($app->getEnvironment().'/app.php');
+
+// Give me a symfony kernel pls!
+$symfonyKernel = include __DIR__ . '/../app/sfkernel.php';
+
+$app->boot(); // Boot PPI
+
+// Register SymfonyContainer into PPI Container
+
+$sfContainer = $symfonyKernel->getContainer();
+$app->getServiceManager()->set('SymfonyContainer', $sfContainer);
+
+// Dispatch PPI System
+$app->setSymfonyKernel($symfonyKernel);
+$app->run();
+
+
+<section>
+    <h2>Use your existing app as a container</h2>
+</section>
+
+<section>
+  <h4>Using PPI as a container, in existing systems</h4>
+      <pre>wordpress/index.php<code>
+$ppiApp->boot();
+$container = $ppiApp->getServiceManager();
+ppi($container); // Register your container, globally
+
+      </code></pre>
+</section>
+
+<section>
+  <h2>Using the container</h2>
+      <pre><code>
+function ppi($id)
+{
+    static $container;
+    if ($id instanceof ContainerInterface) {
+        $container = $id;
+        return;
+    }
+    return $container->get($id);
+}
+      </code></pre>
+</section>
+
+<section>
+  <h2>Using the container</h2>
+      <pre><code>
+&lt;?php
+get_header();
+global $wp_query;
+?>
+&lt;h1&gt;Property List&lt;/h1&gt;
+&lt;?php
+
+$service = ppi('property.service');
+$criteria = new PropertyModule\Criteria();
+
+if(isset($_GET['num_bedrooms'])) {
+    $criteria->setNumBedrooms($_GET['num_bedrooms']);
+}
+$properties = $service->findProperties($criteria);
+
+foreach($properties as $property): // DoctrineORM Entities
+
+      </code></pre>
+</section>
+
 
         <section>
             <h2>Progress</h2>
@@ -989,7 +1022,7 @@ FastRoute Router doesn't appear to be loaded.
         <section>
             <h2>Closing Notes</h2>
             <p class="fragment">PPI prepares you for change, because it's <strong>DESIGNED</strong> for change.</p>
-            <p class="fragment">Be in control of your own architecture, change when you need to</p>
+            <p class="fragment">Be in control of your own destiny, change when you need to</p>
             <p class="fragment">Ultimately, by using PPI you're changing frameworks from this ...</p>
         </section>
 
@@ -1002,12 +1035,12 @@ FastRoute Router doesn't appear to be loaded.
         </section>
 
         <section>
-            <h2>Thank you PHPMiNDS!</h2>
+            <h2>grazie Italia!</h2>
         </section>
 
         <section>
             <ul style="line-height: 180%;">
-                <li>Please leave me feedback! <a href="https://joind.in/talk/fba23">joind.in/talk/fba23</a></li>
+                <li>Please leave me feedback! <a href="https://joind.in/talk/add93">https://joind.in/talk/add93</a></li>
                 <li>Gitter: <a href="https://gitter.im/ppi/framework">ppi.io/chat</a></li>
                 <li>Documentation: <a href="http://docs.ppi.io">docs.ppi.io</a></li>
                 <li>T: <a href="https://twitter.com/dr4goonis">@dr4goonis</a> / <a href="https://twitter.com/ppi_framework">@ppi_framework</a></li>
@@ -1015,13 +1048,9 @@ FastRoute Router doesn't appear to be loaded.
             </ul>
         </section>
 
-        <section>
-            <p><img src="images/tothepub.png" width="70%"></p>
-        </section>
-
     </div>
     <div class='footer'>
-        <a href="https://twitter.com/ppi_framework">@ppi_framework</a> | PHPMiNDS 2016
+        <a href="https://twitter.com/ppi_framework">@ppi_framework</a> | <a href="http://ppi.io">ppi.io</a> | PHPDay 2016
     </div>
 
 </div>
