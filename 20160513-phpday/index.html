@@ -921,22 +921,33 @@ FastRoute Router doesn't appear to be loaded.
         </section>
 
         <section>
-          <h2>Can I haz shiny new features plz!?!1!?!11</h2>
+          <h3>We have an announcement to make!</h3>
+          <p>Can I haz shiny new features plz?! :-D</p>
         </section>
-
-
 
         <section>
-            <h4>PPI app as a container</4h>
-            <p><img src="images/ppi-zf-sf-boot-model.jpg"></p>
+          <h3>Full Symfony bundles support</h3>
         </section>
 
+        <section>
+            <h4>Boot model</h4>
+            <p><img src="images/ppi-zf-sf-boot-model.jpg" width="90%"></p>
+        </section>
+
+        <section>
+            <h4>Dispatch model</h4>
+            <p><img src="images/ppi-zf-sf-dispatch-model.jpg" width="90%"></p>
+        </section>
+
+
+
+
+
+<section>
+  <h2>Loading your symfony kernel</h2>
+      <pre><code>
 // Create...
-$app = new PPI\Framework\App(array(
-    'environment'   => $env,
-    'debug'         => $debug,
-    'rootDir'       => realpath(__DIR__.'/../app'),
-));
+$app = new PPI\Framework\App();
 
 // ...configure...
 $app->loadConfig($app->getEnvironment().'/app.php');
@@ -954,6 +965,9 @@ $app->getServiceManager()->set('SymfonyContainer', $sfContainer);
 // Dispatch PPI System
 $app->setSymfonyKernel($symfonyKernel);
 $app->run();
+
+      </code></pre>
+</section>
 
 
 <section>
